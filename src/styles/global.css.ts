@@ -1,4 +1,4 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalKeyframes, globalStyle } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
 
@@ -7,6 +7,7 @@ const displayFont = '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Geo
 const monoFont = '"SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace';
 
 globalStyle("html", {
+  fontSize: "16px",
   backgroundColor: themeVars.bg.canvas,
   minHeight: "100%",
 });
@@ -72,4 +73,31 @@ globalStyle("h1, h2, h3", {
 
 globalStyle("p", {
   margin: 0,
+});
+
+// Page load fade-in animation
+globalKeyframes("fadeInUp", {
+  from: {
+    opacity: 0,
+    transform: "translateY(8px)",
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+});
+
+globalStyle("main", {
+  animation: "fadeInUp 400ms ease-out",
+});
+
+// Reduced motion support
+globalStyle("*, *::before, *::after", {
+  "@media": {
+    "(prefers-reduced-motion: reduce)": {
+      animationDuration: "0.01ms !important" as never,
+      animationIterationCount: "1 !important" as never,
+      transitionDuration: "0.01ms !important" as never,
+    },
+  },
 });

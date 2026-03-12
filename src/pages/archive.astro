@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import * as styles from "../styles/archive.css";
+
+const posts = (await getCollection("posts"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const postsByYear = posts.reduce<Record<number, typeof posts>>((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {});
+
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+const formatDate = (date: Date) => {
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${month}.${day}`;
+};
+---
+
+<Layout title="Archive — seosd의 블로그">
+  <div class={styles.wrapper}>
+    <h1 class={styles.title}>Archive</h1>
+
+    {years.map((year) => (
+      <section key={year} class={styles.yearSection}>
+        <h2 class={styles.yearHeading}>{year}</h2>
+        <ul class={styles.postList}>
+          {postsByYear[year].map((post) => (
+            <li key={post.id} class={styles.postItem}>
+              <time class={styles.postDate}>{formatDate(post.data.date)}</time>
+              <a class={styles.postLink} href={`/posts/${post.id}`}>
+                {post.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Layout>

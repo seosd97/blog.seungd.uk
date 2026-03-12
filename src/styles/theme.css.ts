@@ -147,17 +147,17 @@ export const themeVars = createGlobalThemeContract(semanticContract, (_, path) =
 createGlobalTheme(":root", colorVars, {
   sand: {
     0: "#ffffff",
-    50: "#fcfbf8",
-    100: "#f7f2ea",
-    200: "#efe7db",
-    300: "#e0d5c5",
-    400: "#c9bba7",
-    500: "#af9e88",
-    600: "#8e7e6c",
-    700: "#6e6255",
-    800: "#4d453d",
-    900: "#302b26",
-    950: "#1e1a17",
+    50: "#fafaf9",
+    100: "#f5f5f3",
+    200: "#ececea",
+    300: "#dddcda",
+    400: "#c5c4c1",
+    500: "#a8a7a3",
+    600: "#888785",
+    700: "#6b6a68",
+    800: "#4b4a49",
+    900: "#2e2d2c",
+    950: "#1c1b1a",
   },
   lilac: {
     50: "#faf6ff",
@@ -410,7 +410,7 @@ const darkTheme = {
     overlay: "rgb(3 5 11 / 0.76)",
   },
   text: {
-    strong: colorVars.sand[100],
+    strong: "#f0f0ee",
     default: colorVars.silver[100],
     soft: colorVars.silver[200],
     muted: colorVars.silver[500],
@@ -440,7 +440,7 @@ const darkTheme = {
   },
   selection: {
     bg: "rgb(58 99 222 / 0.24)",
-    text: colorVars.sand[50],
+    text: "#f0f0ee",
   },
   code: {
     bg: "#101735",
@@ -454,7 +454,7 @@ const darkTheme = {
   },
   mark: {
     bg: "rgb(240 163 33 / 0.18)",
-    text: colorVars.sand[50],
+    text: "#f0f0ee",
   },
   feedback: {
     success: {
@@ -489,7 +489,7 @@ const darkTheme = {
       bg: "#162042",
       bgHover: "#1d2a55",
       bgActive: "#24356b",
-      text: colorVars.sand[100],
+      text: "#f0f0ee",
     },
     ghost: {
       hover: "rgb(95 135 246 / 0.10)",

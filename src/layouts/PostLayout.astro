@@ -1,0 +1,38 @@
+---
+import { metadata, postTitle, prose } from "../styles/editorial.css";
+import * as styles from "../styles/post-layout.css";
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+}
+
+const { title, description, date, tags } = Astro.props;
+
+const formattedDate = [
+  date.getFullYear(),
+  String(date.getMonth() + 1).padStart(2, "0"),
+  String(date.getDate()).padStart(2, "0"),
+].join(".");
+---
+
+<Layout title={title} description={description}>
+  <article class={styles.article}>
+    <header class={styles.header}>
+      <h1 class={postTitle}>{title}</h1>
+      <div class={metadata}>
+        <span>seosd</span>
+        <span> · </span>
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+        {tags.length > 0 && (
+          <span> · {tags.join(", ")}</span>
+        )}
+      </div>
+    </header>
+    <div class={prose}><slot /></div>
+    <footer class={styles.footer}><a class={styles.backLink} href="/">← Back to home</a></footer>
+  </article>
+</Layout>

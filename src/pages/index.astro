@@ -1,85 +1,31 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import PostList from "../components/PostList";
 import * as styles from "../styles/home.css";
 
-const highlights = [
-  {
-    value: "1 page",
-    label: "핵심 소개만 남긴 단일 랜딩 구조",
-  },
-  {
-    value: "3 blocks",
-    label: "히어로, 포인트 요약, 행동 유도만 유지",
-  },
-  {
-    value: "Astro",
-    label: "바로 확장 가능한 최소 시작점",
-  },
-] as const;
+const posts = (await getCollection("posts"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const features = [
-  {
-    title: "Simple first view",
-    copy: "첫 화면에서 제목, 설명, CTA를 바로 보여주도록 구조를 정리했습니다.",
-  },
-  {
-    title: "Easy to replace",
-    copy: "문구와 링크만 바꾸면 제품 소개, 블로그 소개, 포트폴리오 랜딩으로 바로 전환할 수 있습니다.",
-  },
-  {
-    title: "Low maintenance",
-    copy: "불필요한 컴포넌트를 줄여서 이후 수정 범위를 페이지와 스타일 두 곳으로 제한했습니다.",
-  },
-] as const;
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+
+const serialized = posts.map((post) => {
+  const charCount = post.data.description.length;
+  const words = Math.ceil(charCount / 3.5);
+  return {
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date.toISOString().slice(0, 10),
+    tags: post.data.tags,
+    slug: post.id,
+    readingTime: Math.max(1, Math.ceil(words / 200)),
+  };
+});
 ---
 
-<Layout title="Example Landing" description="심플한 단일 예시 랜딩 페이지">
-  <main class={styles.page}>
-    <section class={styles.shell}>
-      <div class={styles.hero}>
-        <div class={styles.content}>
-          <span class={styles.eyebrow}>Example landing</span>
-          <h1 class={styles.title}>필요한 소개만 남긴 단일 심플 랜딩 페이지</h1>
-          <p class={styles.lead}>
-            현재 홈은 예시용 단일 랜딩으로 정리했습니다. 복잡한 카드와 보조 컴포넌트를 걷어내고, 첫
-            화면에서 메시지와 행동 유도만 바로 보이도록 줄였습니다.
-          </p>
-
-          <div class={styles.actions}>
-            <a class={styles.primaryAction} href="#features"> 핵심 포인트 보기 </a>
-            <a class={styles.secondaryAction} href="#summary"> 구조 설명 보기 </a>
-          </div>
-        </div>
-
-        <aside class={styles.panel} aria-label="landing summary">
-          <span class={styles.panelEyebrow}>Quick summary</span>
-          <div class={styles.metricGrid}>
-            {highlights.map((item) => (
-              <div key={item.value} class={styles.metricCard}>
-                <strong class={styles.metricValue}>{item.value}</strong>
-                <span class={styles.metricLabel}>{item.label}</span>
-              </div>
-            ))}
-          </div>
-          <p class={styles.panelNote}>
-            텍스트와 링크만 교체하면 서비스 소개, 블로그 소개, 포트폴리오 첫 화면으로 바로 쓸 수
-            있는 최소 형태입니다.
-          </p>
-        </aside>
-      </div>
-
-      <div class={styles.featureGrid} id="features">
-        {features.map((feature) => (
-          <article key={feature.title} class={styles.featureCard}>
-            <h2 class={styles.featureTitle}>{feature.title}</h2>
-            <p class={styles.featureCopy}>{feature.copy}</p>
-          </article>
-        ))}
-      </div>
-
-      <footer class={styles.footer} id="summary">
-        이후 섹션이 필요해지면 이 구조 위에 콘텐츠 블록만 추가하면 됩니다.
-      </footer>
-    </section>
-  </main>
+<Layout title="seosd의 블로그">
+  <div class={styles.wrapper}>
+    <PostList client:load posts={serialized} allTags={allTags} />
+  </div>
 </Layout>
