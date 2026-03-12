@@ -1,8 +1,8 @@
 ---
 import "../styles/theme.css";
 import "../styles/global.css";
-import "../styles/editorial.css";
 import { defaultTheme, themeStorageKey } from "../styles/theme.css";
+import { skipLink } from "./Layout.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_NAME, SITE_DESCRIPTION } from "../consts";
@@ -69,28 +69,9 @@ const themeScript = `
     <title>{title}</title>
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class={skipLink}>Skip to content</a>
     <Header />
     <main id="main-content"><slot /></main>
     <Footer />
   </body>
 </html>
-
-<style>
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: 1rem;
-  z-index: 999;
-  padding: 0.5rem 1rem;
-  background: var(--bg-canvas);
-  color: var(--text-strong);
-  border: 1px solid var(--border-default);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  text-decoration: none;
-}
-.skip-link:focus {
-  top: 1rem;
-}
-</style>

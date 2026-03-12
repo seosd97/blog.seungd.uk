@@ -1,34 +1,15 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
+import { layoutVars } from "./layout.css";
 import { themeVars } from "./theme.css";
-import { CONTAINER_NARROW, FONT_DISPLAY } from "./tokens";
-
-export const wrapper = style({
-  width: CONTAINER_NARROW,
-  margin: "0 auto",
-  paddingTop: "2rem",
-  paddingBottom: "1.5rem",
-});
-
-export const title = style({
-  fontSize: "1.375rem",
-  fontWeight: 600,
-  fontFamily: FONT_DISPLAY,
-  letterSpacing: "-0.02em",
-  lineHeight: 1.2,
-  marginBottom: "1.5rem",
-});
 
 export const yearSection = style({
-  marginBottom: "1.5rem",
+  marginBottom: layoutVars.space.lg,
 });
 
 export const yearHeading = style({
   fontSize: "1rem",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-  color: themeVars.text.strong,
-  marginBottom: "0.5rem",
+  marginBottom: layoutVars.space.sm,
 });
 
 export const postList = style({
@@ -36,7 +17,7 @@ export const postList = style({
   padding: 0,
   margin: 0,
   display: "grid",
-  gap: "0.25rem",
+  gap: layoutVars.space.xs,
 });
 
 export const postItem = style({
@@ -55,10 +36,7 @@ export const postDate = style({
 export const postLink = style({
   fontSize: "0.875rem",
   color: themeVars.text.default,
-  textDecoration: "none",
-  transition: "color 160ms ease",
-});
-
-globalStyle(`${postLink}:hover`, {
-  color: themeVars.link.hover,
+  ":hover": {
+    color: themeVars.link.hover,
+  },
 });

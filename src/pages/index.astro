@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList";
-import * as styles from "../styles/home.css";
+import { pageWrapperWide } from "../styles/page.css";
 import { SITE_TITLE } from "../consts";
 
 const posts = (await getCollection("posts"))
@@ -26,7 +26,7 @@ const serialized = posts.map((post) => {
 ---
 
 <Layout title={SITE_TITLE}>
-  <div class={styles.wrapper}>
+  <div class={pageWrapperWide}>
     <PostList client:load posts={serialized} allTags={allTags} />
   </div>
 </Layout>

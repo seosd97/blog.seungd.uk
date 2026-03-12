@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import * as styles from "../styles/about.css";
-import { prose } from "../styles/editorial.css";
+import { pageWrapper, pageTitle } from "../styles/page.css";
+import { prose } from "../styles/prose.css";
 import { SITE_TITLE } from "../consts";
 ---
 
 <Layout title={`About — ${SITE_TITLE}`}>
-  <div class={styles.wrapper}>
-    <h1 class={styles.title}>About</h1>
+  <div class={pageWrapper}>
+    <h1 class={pageTitle}>About</h1>
 
     <div class={prose}>
       <p>

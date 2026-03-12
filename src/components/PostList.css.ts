@@ -1,14 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { themeVars } from "./theme.css";
-import { CONTAINER_WIDE, FONT_DISPLAY } from "./tokens";
-
-export const wrapper = style({
-  width: CONTAINER_WIDE,
-  margin: "0 auto",
-  paddingTop: "1.5rem",
-  paddingBottom: "1rem",
-});
+import { layoutVars } from "../styles/layout.css";
+import { themeVars } from "../styles/theme.css";
+import { FONT_DISPLAY } from "../styles/tokens";
 
 /* --- Post count --- */
 
@@ -16,14 +10,14 @@ export const postCount = style({
   fontSize: "0.75rem",
   color: themeVars.text.muted,
   textAlign: "right",
-  marginBottom: "0.5rem",
+  marginBottom: layoutVars.space.sm,
 });
 
 /* --- Post list --- */
 
 export const postList = style({
   display: "grid",
-  gap: "2rem",
+  gap: layoutVars.space.xl,
 });
 
 export const postItem = style({
@@ -38,8 +32,6 @@ export const postTitle = style({
   letterSpacing: "-0.02em",
   lineHeight: 1.3,
   color: themeVars.text.soft,
-  textDecoration: "none",
-  transition: "color 160ms ease",
   ":hover": {
     color: themeVars.text.strong,
   },
@@ -83,8 +75,6 @@ export const readMore = style({
   fontSize: "0.8125rem",
   fontWeight: 500,
   color: themeVars.link.default,
-  textDecoration: "none",
-  transition: "color 160ms ease",
   ":hover": {
     color: themeVars.link.hover,
   },
@@ -96,15 +86,13 @@ export const tagBrowse = style({
   display: "flex",
   flexWrap: "wrap",
   gap: "0.625rem",
-  marginTop: "1.5rem",
+  marginTop: layoutVars.space.lg,
   paddingTop: "0.75rem",
 });
 
 export const tagBrowseLink = style({
   fontSize: "0.75rem",
   color: themeVars.text.muted,
-  textDecoration: "none",
-  transition: "color 160ms ease",
   ":hover": {
     color: themeVars.text.strong,
   },

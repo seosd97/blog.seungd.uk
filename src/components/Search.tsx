@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as styles from "../styles/search.css";
+import * as styles from "./Search.css";
 
 export default function Search({ onSearch }: { onSearch: (query: string) => void }) {
   const [value, setValue] = useState("");

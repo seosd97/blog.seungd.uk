@@ -1,7 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { themeVars } from "./theme.css";
-import { CONTAINER_WIDE } from "./tokens";
+import { layoutVars } from "../styles/layout.css";
+import { themeVars } from "../styles/theme.css";
+import { CONTAINER_WIDE } from "../styles/tokens";
 
 export const footer = style({
   width: CONTAINER_WIDE,
@@ -9,8 +10,8 @@ export const footer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  marginTop: "1rem",
-  paddingTop: "0.5rem",
+  marginTop: layoutVars.space.md,
+  paddingTop: layoutVars.space.sm,
   paddingBottom: "0.75rem",
   borderTop: `1px solid ${themeVars.border.subtle}`,
   fontSize: "0.75rem",
@@ -33,8 +34,6 @@ export const dot = style({
 
 export const inlineLink = style({
   color: themeVars.text.muted,
-  textDecoration: "none",
-  transition: "color 160ms ease",
   ":hover": {
     color: themeVars.text.strong,
   },
@@ -43,13 +42,12 @@ export const inlineLink = style({
 export const socialLinks = style({
   display: "flex",
   alignItems: "center",
-  gap: "0.5rem",
+  gap: layoutVars.space.sm,
 });
 
 export const socialLink = style({
   display: "inline-flex",
   color: themeVars.text.muted,
-  transition: "color 160ms ease",
   ":hover": {
     color: themeVars.text.strong,
   },

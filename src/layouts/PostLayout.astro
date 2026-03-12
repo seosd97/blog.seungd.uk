@@ -1,6 +1,6 @@
 ---
-import { metadata, postTitle, prose } from "../styles/editorial.css";
-import * as styles from "../styles/post-layout.css";
+import { prose } from "../styles/prose.css";
+import * as styles from "./PostLayout.css";
 import Layout from "./Layout.astro";
 import { AUTHOR } from "../consts";
 import { formatDate } from "../utils/format";
@@ -18,8 +18,8 @@ const { title, description, date, tags } = Astro.props;
 <Layout title={title} description={description} ogType="article" publishedDate={date.toISOString()}>
   <article class={styles.article}>
     <header class={styles.header}>
-      <h1 class={postTitle}>{title}</h1>
-      <div class={metadata}>
+      <h1 class={styles.postTitle}>{title}</h1>
+      <div class={styles.metadata}>
         <span>{AUTHOR}</span>
         <span> · </span>
         <time datetime={date.toISOString()}>{formatDate(date)}</time>

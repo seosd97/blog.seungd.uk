@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Search from "./Search";
-import * as styles from "../styles/home.css";
+import * as styles from "./PostList.css";
 import { formatDate } from "../utils/format";
 
 interface Post {

@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import * as styles from "../styles/archive.css";
+import { pageWrapper, pageTitle } from "../styles/page.css";
+import * as archive from "../styles/archive.css";
 import { SITE_TITLE } from "../consts";
 
 const posts = (await getCollection("posts"))
@@ -27,17 +28,17 @@ const formatDate = (date: Date) => {
 ---
 
 <Layout title={`Archive — ${SITE_TITLE}`}>
-  <div class={styles.wrapper}>
-    <h1 class={styles.title}>Archive</h1>
+  <div class={pageWrapper}>
+    <h1 class={pageTitle}>Archive</h1>
 
     {years.map((year) => (
-      <section key={year} class={styles.yearSection}>
-        <h2 class={styles.yearHeading}>{year}</h2>
-        <ul class={styles.postList}>
+      <section key={year} class={archive.yearSection}>
+        <h2 class={archive.yearHeading}>{year}</h2>
+        <ul class={archive.postList}>
           {postsByYear[year].map((post) => (
-            <li key={post.id} class={styles.postItem}>
-              <time class={styles.postDate}>{formatDate(post.data.date)}</time>
-              <a class={styles.postLink} href={`/posts/${post.id}`}>
+            <li key={post.id} class={archive.postItem}>
+              <time class={archive.postDate}>{formatDate(post.data.date)}</time>
+              <a class={archive.postLink} href={`/posts/${post.id}`}>
                 {post.data.title}
               </a>
             </li>
