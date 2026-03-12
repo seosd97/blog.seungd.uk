@@ -42,6 +42,12 @@ globalStyle("a:hover", {
   color: themeVars.link.hover,
 });
 
+globalStyle("a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible", {
+  outline: `2px solid ${themeVars.accent.primary}`,
+  outlineOffset: "2px",
+  borderRadius: "2px",
+});
+
 globalStyle("button, input, textarea, select", {
   font: "inherit",
 });

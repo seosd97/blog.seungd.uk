@@ -15,12 +15,12 @@ export const input = style({
   backgroundColor: "transparent",
   border: `1px solid ${themeVars.border.default}`,
   borderRadius: "0.25rem",
-  outline: "none",
-  transition: "border-color 160ms ease",
+  transition: "border-color 160ms ease, box-shadow 160ms ease",
   "::placeholder": {
     color: themeVars.text.muted,
   },
-  ":focus": {
+  ":focus-visible": {
     borderColor: themeVars.accent.primary,
+    boxShadow: `0 0 0 3px ${themeVars.focus.ring}`,
   },
 });

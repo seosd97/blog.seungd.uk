@@ -306,7 +306,7 @@ const lightTheme = {
     strong: colorVars.night[900],
     default: colorVars.night[800],
     soft: colorVars.night[700],
-    muted: colorVars.silver[600],
+    muted: colorVars.silver[700],
     disabled: colorVars.silver[500],
     onAccent: "#ffffff",
   },
@@ -324,9 +324,9 @@ const lightTheme = {
     secondaryActive: colorVars.ice[600],
   },
   link: {
-    default: colorVars.lilac[600],
-    hover: colorVars.lilac[700],
-    visited: colorVars.iris[500],
+    default: colorVars.lilac[700],
+    hover: colorVars.lilac[800],
+    visited: colorVars.iris[600],
   },
   focus: {
     ring: "rgb(187 156 249 / 0.32)",

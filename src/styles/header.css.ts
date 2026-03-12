@@ -41,6 +41,12 @@ export const navLink = style({
   ":hover": {
     color: themeVars.text.strong,
   },
+  ":focus-visible": {
+    color: themeVars.text.strong,
+    outline: `2px solid ${themeVars.accent.primary}`,
+    outlineOffset: "2px",
+    borderRadius: "2px",
+  },
 });
 
 export const themeToggleBtn = style({
@@ -62,5 +68,9 @@ export const themeToggleBtn = style({
   },
   ":active": {
     backgroundColor: themeVars.button.ghost.active,
+  },
+  ":focus-visible": {
+    outline: `2px solid ${themeVars.accent.primary}`,
+    outlineOffset: "2px",
   },
 });

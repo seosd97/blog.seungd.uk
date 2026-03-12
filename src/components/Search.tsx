@@ -11,14 +11,15 @@ export default function Search({ onSearch }: { onSearch: (query: string) => void
   };
 
   return (
-    <div className={styles.wrapper}>
+    <search className={styles.wrapper}>
       <input
         type="text"
         className={styles.input}
         placeholder="Search posts..."
+        aria-label="검색"
         value={value}
         onChange={handleChange}
       />
-    </div>
+    </search>
   );
 }
