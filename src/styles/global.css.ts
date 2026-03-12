@@ -91,6 +91,16 @@ globalStyle("main", {
   animation: "fadeInUp 400ms ease-out",
 });
 
+// Shiki dual theme: swap colors in dark mode
+globalStyle(':root[data-theme="dark"] .astro-code', {
+  color: "var(--shiki-dark)" as never,
+  backgroundColor: "var(--shiki-dark-bg)" as never,
+});
+
+globalStyle(':root[data-theme="dark"] .astro-code span', {
+  color: "var(--shiki-dark)" as never,
+});
+
 // Reduced motion support
 globalStyle("*, *::before, *::after", {
   "@media": {

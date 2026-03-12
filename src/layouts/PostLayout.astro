@@ -19,7 +19,7 @@ const formattedDate = [
 ].join(".");
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} ogType="article" publishedDate={date.toISOString()}>
   <article class={styles.article}>
     <header class={styles.header}>
       <h1 class={postTitle}>{title}</h1>
