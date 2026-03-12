@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import * as styles from "../styles/about.css";
 import { prose } from "../styles/editorial.css";
+import { SITE_TITLE } from "../consts";
 ---
 
-<Layout title="About — seosd의 블로그">
+<Layout title={`About — ${SITE_TITLE}`}>
   <div class={styles.wrapper}>
     <h1 class={styles.title}>About</h1>
 

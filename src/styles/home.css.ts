@@ -1,12 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
-
-const displayFont =
-  '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif';
+import { CONTAINER_WIDE, FONT_DISPLAY } from "./tokens";
 
 export const wrapper = style({
-  width: `min(64rem, 100% - 4rem)`,
+  width: CONTAINER_WIDE,
   margin: "0 auto",
   paddingTop: "1.5rem",
   paddingBottom: "1rem",
@@ -36,7 +34,7 @@ export const postItem = style({
 export const postTitle = style({
   fontSize: "1.25rem",
   fontWeight: 600,
-  fontFamily: displayFont,
+  fontFamily: FONT_DISPLAY,
   letterSpacing: "-0.02em",
   lineHeight: 1.3,
   color: themeVars.text.soft,

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList";
 import * as styles from "../styles/home.css";
+import { SITE_TITLE } from "../consts";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !post.data.draft)
@@ -24,7 +25,7 @@ const serialized = posts.map((post) => {
 });
 ---
 
-<Layout title="seosd의 블로그">
+<Layout title={SITE_TITLE}>
   <div class={styles.wrapper}>
     <PostList client:load posts={serialized} allTags={allTags} />
   </div>

@@ -1,9 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
+import { CONTAINER_NARROW } from "./tokens";
 
 export const article = style({
-  width: `min(56rem, 100% - 4rem)`,
+  width: CONTAINER_NARROW,
   margin: "0 auto",
   paddingTop: "2.5rem",
   paddingBottom: "1.5rem",

@@ -8,11 +8,11 @@ const monoFont =
   '"SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace';
 
 // Spacing tokens (based on 16px = 1rem)
-export const spaceXs = createVar();
-export const spaceSm = createVar();
-export const spaceMd = createVar();
-export const spaceLg = createVar();
-export const spaceXl = createVar();
+const spaceXs = createVar();
+const spaceSm = createVar();
+const spaceMd = createVar();
+const spaceLg = createVar();
+const spaceXl = createVar();
 
 globalStyle(":root", {
   vars: {
@@ -25,15 +25,6 @@ globalStyle(":root", {
 });
 
 // Type scale styles
-export const siteTitle = style({
-  fontSize: "clamp(3rem, 6vw, 5rem)",
-  fontWeight: 700,
-  lineHeight: 0.95,
-  fontFamily: displayFont,
-  letterSpacing: "-0.04em",
-  color: themeVars.text.strong,
-});
-
 export const postTitle = style({
   fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
   fontWeight: 600,
@@ -43,24 +34,10 @@ export const postTitle = style({
   color: themeVars.text.strong,
 });
 
-export const body = style({
-  fontSize: "1rem",
-  fontWeight: 400,
-  lineHeight: 1.75,
-  color: themeVars.text.default,
-});
-
 export const metadata = style({
   fontSize: "0.75rem",
   fontWeight: 400,
   lineHeight: 1.5,
-  color: themeVars.text.muted,
-});
-
-export const caption = style({
-  fontSize: "0.75rem",
-  fontWeight: 400,
-  lineHeight: 1.4,
   color: themeVars.text.muted,
 });
 

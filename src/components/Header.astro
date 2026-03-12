@@ -1,10 +1,11 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import { header, logo, rightGroup, nav, navLink } from "../styles/header.css";
+import { SITE_NAME } from "../consts";
 ---
 
 <header class={header}>
-  <a href="/" class={logo}>seosd blog</a>
+  <a href="/" class={logo}>{SITE_NAME}</a>
   <div class={rightGroup}>
     <nav class={nav}>
       <a href="/archive" class={navLink}>Archive</a>

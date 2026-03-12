@@ -1,9 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
+import { CONTAINER_WIDE } from "./tokens";
 
 export const footer = style({
-  width: `min(64rem, 100% - 4rem)`,
+  width: CONTAINER_WIDE,
   margin: "0 auto",
   display: "flex",
   alignItems: "center",

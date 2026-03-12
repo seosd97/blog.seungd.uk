@@ -1,12 +1,10 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
-
-const displayFont =
-  '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif';
+import { CONTAINER_NARROW, FONT_DISPLAY } from "./tokens";
 
 export const wrapper = style({
-  width: `min(56rem, 100% - 4rem)`,
+  width: CONTAINER_NARROW,
   margin: "0 auto",
   paddingTop: "2rem",
   paddingBottom: "1.5rem",
@@ -15,7 +13,7 @@ export const wrapper = style({
 export const title = style({
   fontSize: "1.375rem",
   fontWeight: 600,
-  fontFamily: displayFont,
+  fontFamily: FONT_DISPLAY,
   letterSpacing: "-0.02em",
   lineHeight: 1.2,
   marginBottom: "1.5rem",

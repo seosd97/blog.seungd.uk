@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Search from "./Search";
 import * as styles from "../styles/home.css";
+import { formatDate } from "../utils/format";
 
 interface Post {
   title: string;
@@ -9,13 +10,6 @@ interface Post {
   tags: string[];
   slug: string;
   readingTime: number;
-}
-
-function formatDate(iso: string) {
-  const d = new Date(iso);
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${d.getFullYear()}.${m}.${day}`;
 }
 
 export default function PostList({ posts, allTags }: { posts: Post[]; allTags: string[] }) {
@@ -44,7 +38,7 @@ export default function PostList({ posts, allTags }: { posts: Post[]; allTags: s
             </a>
 
             <div className={styles.postMeta}>
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <time dateTime={post.date}>{formatDate(new Date(post.date))}</time>
               <span className={styles.separator} />
               <span>{post.readingTime}min read</span>
               {post.tags.length > 0 && (

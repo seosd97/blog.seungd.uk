@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import type { APIContext } from "astro";
+import { type APIContext } from "astro";
+import { SITE_NAME, SITE_DESCRIPTION } from "../consts";
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection("posts"))
@@ -8,9 +9,9 @@ export async function GET(context: APIContext) {
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
-    title: "seosd blog",
-    description: "개발, 디자인, 그리고 일상의 기록",
-    site: context.site!,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    site: context.site ?? new URL("https://blog.seungd.uk"),
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
