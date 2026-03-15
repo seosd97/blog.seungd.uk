@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 
 export const themeToggleBtn = style({
@@ -13,7 +14,7 @@ export const themeToggleBtn = style({
   background: "none",
   color: themeVars.text.soft,
   cursor: "pointer",
-  borderRadius: "0.25rem",
+  borderRadius: layoutVars.radius.sm,
   transition: "color 160ms ease, background-color 160ms ease",
   ":hover": {
     color: themeVars.text.strong,

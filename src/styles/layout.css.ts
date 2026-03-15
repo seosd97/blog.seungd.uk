@@ -13,4 +13,8 @@ createGlobalTheme(":root", layoutVars, {
     xl: "2rem",
     xxl: "2.5rem",
   },
+  radius: {
+    sm: "0.25rem",
+    md: "0.375rem",
+  },
 });

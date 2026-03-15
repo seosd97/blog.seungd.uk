@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Search from "./Search";
-import * as styles from "./PostList.css";
+import * as styles from "./ArticleList.css";
 import { formatDate } from "../utils/format";
 
-interface Post {
+interface Article {
   title: string;
   description: string;
   date: string;
@@ -12,40 +12,40 @@ interface Post {
   readingTime: number;
 }
 
-export default function PostList({ posts, allTags }: { posts: Post[]; allTags: string[] }) {
+export default function ArticleList({ articles, allTags }: { articles: Article[]; allTags: string[] }) {
   const [query, setQuery] = useState("");
 
   const q = query.toLowerCase().trim();
   const filtered = q
-    ? posts.filter(
-        (p) =>
-          p.title.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q) ||
-          p.tags.some((t) => t.toLowerCase().includes(q)),
+    ? articles.filter(
+        (a) =>
+          a.title.toLowerCase().includes(q) ||
+          a.description.toLowerCase().includes(q) ||
+          a.tags.some((t) => t.toLowerCase().includes(q)),
       )
-    : posts;
+    : articles;
 
   return (
     <>
-      <p className={styles.postCount}>total {posts.length} posts</p>
+      <p className={styles.articleCount}>total {articles.length} articles</p>
       <Search onSearch={setQuery} />
 
-      <div className={styles.postList}>
-        {filtered.map((post) => (
-          <article className={styles.postItem} key={post.slug}>
-            <a href={`/posts/${post.slug}`} className={styles.postTitle}>
-              {post.title}
+      <div className={styles.articleList}>
+        {filtered.map((article) => (
+          <article className={styles.articleItem} key={article.slug}>
+            <a href={`/articles/${article.slug}`} className={styles.articleTitle}>
+              {article.title}
             </a>
 
-            <div className={styles.postMeta}>
-              <time dateTime={post.date}>{formatDate(new Date(post.date))}</time>
+            <div className={styles.articleMeta}>
+              <time dateTime={article.date}>{formatDate(new Date(article.date))}</time>
               <span className={styles.separator} />
-              <span>{post.readingTime}min read</span>
-              {post.tags.length > 0 && (
+              <span>{article.readingTime}min read</span>
+              {article.tags.length > 0 && (
                 <>
                   <span className={styles.separator} />
                   <span className={styles.tagList}>
-                    {post.tags.map((t) => (
+                    {article.tags.map((t) => (
                       <span className={styles.tag} key={t}>
                         {t}
                       </span>
@@ -55,16 +55,16 @@ export default function PostList({ posts, allTags }: { posts: Post[]; allTags: s
               )}
             </div>
 
-            <p className={styles.postDesc}>{post.description}</p>
+            <p className={styles.articleDesc}>{article.description}</p>
 
-            <a href={`/posts/${post.slug}`} className={styles.readMore}>
+            <a href={`/articles/${article.slug}`} className={styles.readMore}>
               Read more &rarr;
             </a>
           </article>
         ))}
 
         {filtered.length === 0 && (
-          <p className={styles.postDesc}>검색 결과가 없습니다.</p>
+          <p className={styles.articleDesc}>검색 결과가 없습니다.</p>
         )}
       </div>
 

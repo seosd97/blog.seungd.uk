@@ -15,7 +15,7 @@ export const input = style({
   color: themeVars.text.default,
   backgroundColor: "transparent",
   border: `1px solid ${themeVars.border.default}`,
-  borderRadius: "0.25rem",
+  borderRadius: layoutVars.radius.sm,
   transition: "border-color 160ms ease, box-shadow 160ms ease",
   "::placeholder": {
     color: themeVars.text.muted,

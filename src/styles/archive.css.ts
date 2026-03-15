@@ -12,7 +12,7 @@ export const yearHeading = style({
   marginBottom: layoutVars.space.sm,
 });
 
-export const postList = style({
+export const articleList = style({
   listStyle: "none",
   padding: 0,
   margin: 0,
@@ -20,20 +20,20 @@ export const postList = style({
   gap: layoutVars.space.xs,
 });
 
-export const postItem = style({
+export const articleItem = style({
   display: "flex",
   alignItems: "baseline",
   gap: "0.75rem",
 });
 
-export const postDate = style({
+export const articleDate = style({
   fontSize: "0.75rem",
   fontVariantNumeric: "tabular-nums",
   color: themeVars.text.muted,
   flexShrink: 0,
 });
 
-export const postLink = style({
+export const articleLink = style({
   fontSize: "0.875rem",
   color: themeVars.text.default,
   ":hover": {

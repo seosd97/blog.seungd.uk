@@ -72,7 +72,7 @@ globalStyle(`${prose} li`, {
 globalStyle(`${prose} pre`, {
   backgroundColor: themeVars.code.bg,
   border: `1px solid ${themeVars.code.border}`,
-  borderRadius: "0.375rem",
+  borderRadius: layoutVars.radius.md,
   padding: "0.75rem",
   overflowX: "auto",
   marginBottom: layoutVars.space.md,
@@ -91,7 +91,7 @@ globalStyle(`${prose} :not(pre) > code`, {
   fontSize: "0.875em",
   backgroundColor: themeVars.code.inlineBg,
   padding: "0.125em 0.375em",
-  borderRadius: "0.25rem",
+  borderRadius: layoutVars.radius.sm,
   color: themeVars.code.text,
 });
 
@@ -112,5 +112,5 @@ globalStyle(`${prose} img`, {
   height: "auto",
   marginTop: layoutVars.space.md,
   marginBottom: layoutVars.space.md,
-  borderRadius: "0.25rem",
+  borderRadius: layoutVars.radius.sm,
 });

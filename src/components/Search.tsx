@@ -15,7 +15,7 @@ export default function Search({ onSearch }: { onSearch: (query: string) => void
       <input
         type="text"
         className={styles.input}
-        placeholder="Search posts..."
+        placeholder="Search articles..."
         aria-label="검색"
         value={value}
         onChange={handleChange}

@@ -4,7 +4,7 @@ import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 import { CONTAINER_NARROW } from "../styles/tokens";
 
-export const postTitle = style({
+export const articleTitle = style({
   fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
   lineHeight: 1.2,
 });

@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 
 export const skipLink = style({
@@ -11,7 +12,7 @@ export const skipLink = style({
   background: themeVars.bg.canvas,
   color: themeVars.text.strong,
   border: `1px solid ${themeVars.border.default}`,
-  borderRadius: "0.375rem",
+  borderRadius: layoutVars.radius.md,
   fontSize: "0.875rem",
   textDecoration: "none",
   ":focus": {

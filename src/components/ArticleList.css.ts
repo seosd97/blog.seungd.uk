@@ -4,28 +4,28 @@ import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 import { FONT_DISPLAY } from "../styles/tokens";
 
-/* --- Post count --- */
+/* --- Article count --- */
 
-export const postCount = style({
+export const articleCount = style({
   fontSize: "0.75rem",
   color: themeVars.text.muted,
   textAlign: "right",
   marginBottom: layoutVars.space.sm,
 });
 
-/* --- Post list --- */
+/* --- Article list --- */
 
-export const postList = style({
+export const articleList = style({
   display: "grid",
   gap: layoutVars.space.xl,
 });
 
-export const postItem = style({
+export const articleItem = style({
   display: "grid",
   gap: "0.375rem",
 });
 
-export const postTitle = style({
+export const articleTitle = style({
   fontSize: "1.25rem",
   fontWeight: 600,
   fontFamily: FONT_DISPLAY,
@@ -37,7 +37,7 @@ export const postTitle = style({
   },
 });
 
-export const postMeta = style({
+export const articleMeta = style({
   display: "flex",
   alignItems: "center",
   flexWrap: "wrap",
@@ -64,7 +64,7 @@ export const tag = style({
   color: themeVars.text.muted,
 });
 
-export const postDesc = style({
+export const articleDesc = style({
   fontSize: "0.875rem",
   lineHeight: 1.65,
   color: themeVars.text.default,

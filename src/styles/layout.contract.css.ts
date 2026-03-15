@@ -10,6 +10,10 @@ export const layoutVars = createGlobalThemeContract(
       xl: null,
       xxl: null,
     },
+    radius: {
+      sm: null,
+      md: null,
+    },
   },
   (_, path) => path.join("-"),
 );

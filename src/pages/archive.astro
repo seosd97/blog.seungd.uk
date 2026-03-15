@@ -5,18 +5,18 @@ import { pageWrapper, pageTitle } from "../styles/page.css";
 import * as archive from "../styles/archive.css";
 import { SITE_TITLE } from "../consts";
 
-const posts = (await getCollection("posts"))
-  .filter((post) => !post.data.draft)
+const articles = (await getCollection("articles"))
+  .filter((article) => !article.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const postsByYear = posts.reduce<Record<number, typeof posts>>((acc, post) => {
-  const year = post.data.date.getFullYear();
+const articlesByYear = articles.reduce<Record<number, typeof articles>>((acc, article) => {
+  const year = article.data.date.getFullYear();
   if (!acc[year]) acc[year] = [];
-  acc[year].push(post);
+  acc[year].push(article);
   return acc;
 }, {});
 
-const years = Object.keys(postsByYear)
+const years = Object.keys(articlesByYear)
   .map(Number)
   .sort((a, b) => b - a);
 
@@ -34,12 +34,12 @@ const formatDate = (date: Date) => {
     {years.map((year) => (
       <section key={year} class={archive.yearSection}>
         <h2 class={archive.yearHeading}>{year}</h2>
-        <ul class={archive.postList}>
-          {postsByYear[year].map((post) => (
-            <li key={post.id} class={archive.postItem}>
-              <time class={archive.postDate}>{formatDate(post.data.date)}</time>
-              <a class={archive.postLink} href={`/posts/${post.id}`}>
-                {post.data.title}
+        <ul class={archive.articleList}>
+          {articlesByYear[year].map((article) => (
+            <li key={article.id} class={archive.articleItem}>
+              <time class={archive.articleDate}>{formatDate(article.data.date)}</time>
+              <a class={archive.articleLink} href={`/articles/${article.id}`}>
+                {article.data.title}
               </a>
             </li>
           ))}
