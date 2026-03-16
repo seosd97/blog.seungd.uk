@@ -12,9 +12,8 @@ interface Article {
   readingTime: number;
 }
 
-export default function ArticleList({ articles, allTags }: { articles: Article[]; allTags: string[] }) {
+export default function ArticleList({ articles }: { articles: Article[] }) {
   const [query, setQuery] = useState("");
-  const latestDate = articles[0]?.date;
 
   const q = query.toLowerCase().trim();
   const filtered = q
@@ -27,72 +26,53 @@ export default function ArticleList({ articles, allTags }: { articles: Article[]
     : articles;
 
   return (
-    <div className={styles.layout}>
-      <section className={styles.mainColumn}>
-        <div className={styles.articleStream}>
-          {filtered.map((article) => (
-            <article className={styles.articleRow} key={article.slug}>
-              <time className={styles.articleDate} dateTime={article.date}>
-                {formatDate(new Date(article.date))}
-              </time>
+    <>
+      <Search
+        onSearch={setQuery}
+        placeholder="Search title, description, or tags"
+        ariaLabel="Search articles"
+      />
 
-              <div className={styles.articleContent}>
-                <a href={`/articles/${article.slug}`} className={styles.articleTitle}>
-                  {article.title}
-                </a>
-                <p className={styles.articleDesc}>{article.description}</p>
+      <div className={styles.listHeader}>
+        <span className={styles.articleCount}>{articles.length} published</span>
+        {q && <span className={styles.matchCount}>{filtered.length} matching</span>}
+      </div>
 
-                <div className={styles.articleMeta}>
-                  <span>{article.readingTime} min read</span>
-                  {article.tags.length > 0 && (
-                    <>
-                      <span className={styles.separator} />
-                      <span className={styles.tagList}>
-                        {article.tags.map((t) => (
-                          <span className={styles.tag} key={t}>
-                            #{t}
-                          </span>
-                        ))}
+      <div className={styles.list}>
+        {filtered.map((article) => (
+          <article className={styles.item} key={article.slug}>
+            <time className={styles.date} dateTime={article.date}>
+              {formatDate(new Date(article.date))}
+            </time>
+
+            <a href={`/articles/${article.slug}`} className={styles.title}>
+              {article.title}
+            </a>
+
+            <p className={styles.desc}>{article.description}</p>
+
+            <div className={styles.meta}>
+              <span>{article.readingTime} min read</span>
+              {article.tags.length > 0 && (
+                <>
+                  <span className={styles.separator} />
+                  <span className={styles.tagList}>
+                    {article.tags.map((t) => (
+                      <span className={styles.tag} key={t}>
+                        #{t}
                       </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
+                    ))}
+                  </span>
+                </>
+              )}
+            </div>
+          </article>
+        ))}
 
-          {filtered.length === 0 && (
-            <p className={styles.emptyState}>No matching entries found.</p>
-          )}
-        </div>
-      </section>
-
-      <aside className={styles.sideRail} aria-label="Article tools">
-        <p className={styles.articleCount}>
-          {articles.length} published
-          {q ? ` · ${filtered.length} matching` : ""}
-        </p>
-
-        <Search
-          onSearch={setQuery}
-          placeholder="Search title, description, or tags"
-          ariaLabel="Search articles"
-        />
-
-        {allTags.length > 0 && (
-          <nav className={styles.tagBrowse} aria-label="Browse tags">
-            {allTags.map((tag) => (
-              <a href={`/archive?tag=${tag}`} className={styles.tagBrowseLink} key={tag}>
-                #{tag}
-              </a>
-            ))}
-          </nav>
+        {filtered.length === 0 && (
+          <p className={styles.emptyState}>No matching entries found.</p>
         )}
-
-        <p className={styles.latestNote}>
-          {latestDate ? `Latest · ${formatDate(new Date(latestDate))}` : "Latest · n/a"}
-        </p>
-      </aside>
-    </div>
+      </div>
+    </>
   );
 }

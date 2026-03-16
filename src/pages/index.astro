@@ -2,14 +2,12 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ArticleList from "../components/ArticleList";
-import { pageWrapperWide } from "../styles/page.css";
+import { pageWrapperWide, pageHeading } from "../styles/page.css";
 import { SITE_TITLE } from "../consts";
 
 const articles = (await getCollection("articles"))
   .filter((article) => !article.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const allTags = [...new Set(articles.flatMap((a) => a.data.tags))].sort();
 
 const serialized = articles.map((article) => {
   const charCount = article.data.description.length;
@@ -27,6 +25,7 @@ const serialized = articles.map((article) => {
 
 <Layout title={SITE_TITLE}>
   <div class={pageWrapperWide}>
-    <ArticleList client:load articles={serialized} allTags={allTags} />
+    <h1 class={pageHeading}>Articles</h1>
+    <ArticleList client:load articles={serialized} />
   </div>
 </Layout>
