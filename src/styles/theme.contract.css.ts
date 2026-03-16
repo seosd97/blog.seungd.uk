@@ -35,7 +35,7 @@ const buttonContract = {
   text: null,
 } as const;
 
-const cobaltContract = {
+const sumirePrimaryContract = {
   ...scaleContract,
   "300a2": null,
   "300a18": null,
@@ -58,10 +58,9 @@ const amberContract = {
 
 const colorContract = {
   sand: neutralScaleContract,
-  lilac: scaleContract,
-  ice: scaleContract,
+  sumirePrimary: sumirePrimaryContract,
+  sumireSecondary: scaleContract,
   night: scaleContract,
-  cobalt: cobaltContract,
   iris: scaleContract,
   silver: scaleContract,
   green: scaleContract,

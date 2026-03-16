@@ -59,7 +59,7 @@ export const title = style([
   textStyles.heading2,
   {
     fontFamily: FONT_DISPLAY,
-    fontWeight: typographyVars.weight[400],
+    fontWeight: typographyVars.weight[600],
     color: themeVars.text.strong,
     textDecoration: "none",
     lineHeight: typographyVars.lineHeight[400],
@@ -75,6 +75,7 @@ export const desc = style([
   {
     margin: 0,
     maxWidth: "66ch",
+    fontWeight: typographyVars.weight[400],
     color: themeVars.text.default,
   },
 ]);
