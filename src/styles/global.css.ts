@@ -84,19 +84,17 @@ globalStyle("p", {
 });
 
 // Page load fade-in animation
-globalKeyframes("fadeInUp", {
+globalKeyframes("fadeIn", {
   from: {
     opacity: 0,
-    transform: "translateY(8px)",
   },
   to: {
     opacity: 1,
-    transform: "translateY(0)",
   },
 });
 
 globalStyle("main", {
-  animation: "fadeInUp 400ms ease-out",
+  animation: "fadeIn 400ms ease-out",
 });
 
 // Shiki dual theme: swap colors in dark mode

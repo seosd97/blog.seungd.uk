@@ -3,30 +3,28 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { layoutVars } from "./layout.css";
 import { themeVars } from "./theme.css";
 import { typographyVars } from "./typography.css";
-import { textStyles } from "./typography.semantic.css";
 
-export const prose = style([
-  textStyles.body1,
-  {
-    maxWidth: "72ch",
-    color: themeVars.text.default,
-  },
-]);
+export const prose = style({
+  fontSize: typographyVars.size[600],
+  lineHeight: typographyVars.lineHeight[900],
+  maxWidth: "40rem",
+  color: themeVars.text.default,
+});
 
 globalStyle(`${prose} p`, {
-  marginBottom: layoutVars.space.md,
+  marginBottom: layoutVars.space.lg,
 });
 
 globalStyle(`${prose} h2`, {
-  fontSize: typographyVars.size[1000],
+  fontSize: typographyVars.size[900],
   lineHeight: typographyVars.lineHeight[200],
   letterSpacing: typographyVars.tracking[100],
-  marginTop: layoutVars.space.lg,
+  marginTop: layoutVars.space.xl,
   marginBottom: layoutVars.space.sm,
 });
 
 globalStyle(`${prose} h3`, {
-  fontSize: typographyVars.size[800],
+  fontSize: typographyVars.size[700],
   lineHeight: typographyVars.lineHeight[300],
   letterSpacing: typographyVars.tracking[200],
   marginTop: layoutVars.space.lg,
@@ -34,7 +32,7 @@ globalStyle(`${prose} h3`, {
 });
 
 globalStyle(`${prose} h4`, {
-  fontSize: typographyVars.size[700],
+  fontSize: typographyVars.size[600],
   lineHeight: typographyVars.lineHeight[400],
   letterSpacing: typographyVars.tracking[100],
   marginTop: layoutVars.space.md,
@@ -51,7 +49,7 @@ globalStyle(`${prose} blockquote`, {
   paddingLeft: "0.75rem",
   marginLeft: 0,
   marginRight: 0,
-  marginBottom: layoutVars.space.md,
+  marginBottom: layoutVars.space.lg,
   fontStyle: "italic",
   fontSize: typographyVars.size[400],
   color: themeVars.text.soft,
@@ -63,7 +61,7 @@ globalStyle(`${prose} blockquote p`, {
 
 globalStyle(`${prose} ul, ${prose} ol`, {
   paddingLeft: "1.25rem",
-  marginBottom: layoutVars.space.md,
+  marginBottom: layoutVars.space.lg,
 });
 
 globalStyle(`${prose} li`, {
@@ -76,7 +74,7 @@ globalStyle(`${prose} pre`, {
   borderRadius: layoutVars.radius.md,
   padding: "0.75rem",
   overflowX: "auto",
-  marginBottom: layoutVars.space.md,
+  marginBottom: layoutVars.space.lg,
 });
 
 globalStyle(`${prose} pre code`, {
@@ -98,8 +96,8 @@ globalStyle(`${prose} :not(pre) > code`, {
 globalStyle(`${prose} hr`, {
   border: "none",
   borderTop: `1px solid ${themeVars.border.subtle}`,
-  marginTop: layoutVars.space.lg,
-  marginBottom: layoutVars.space.lg,
+  marginTop: layoutVars.space.xl,
+  marginBottom: layoutVars.space.xl,
 });
 
 globalStyle(`${prose} a:hover`, {

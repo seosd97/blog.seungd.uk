@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import MenuLines from "../components/MenuLines.astro";
 import { pageWrapper, pageTitle } from "../styles/page.css";
 import { prose } from "../styles/prose.css";
 import { SITE_TITLE } from "../consts";
@@ -8,6 +9,7 @@ import { SITE_TITLE } from "../consts";
 <Layout title={`About — ${SITE_TITLE}`}>
   <div class={pageWrapper}>
     <h1 class={pageTitle}>About</h1>
+    <MenuLines />
 
     <div class={prose}>
       <p>

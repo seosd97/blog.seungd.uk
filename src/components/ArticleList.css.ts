@@ -56,7 +56,7 @@ export const date = style([
 ]);
 
 export const title = style([
-  textStyles.body1,
+  textStyles.heading2,
   {
     fontFamily: FONT_DISPLAY,
     fontWeight: typographyVars.weight[400],
@@ -71,7 +71,7 @@ export const title = style([
 ]);
 
 export const desc = style([
-  textStyles.body3,
+  textStyles.caption1,
   {
     margin: 0,
     maxWidth: "66ch",
@@ -80,7 +80,7 @@ export const desc = style([
 ]);
 
 export const meta = style([
-  textStyles.caption2,
+  textStyles.caption3,
   {
     display: "flex",
     alignItems: "center",

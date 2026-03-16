@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import MenuLines from "../components/MenuLines.astro";
 import ArticleList from "../components/ArticleList";
 import { pageWrapperWide, pageHeading } from "../styles/page.css";
 import { SITE_TITLE } from "../consts";
@@ -26,6 +27,7 @@ const serialized = articles.map((article) => {
 <Layout title={SITE_TITLE}>
   <div class={pageWrapperWide}>
     <h1 class={pageHeading}>Articles</h1>
+    <MenuLines />
     <ArticleList client:load articles={serialized} />
   </div>
 </Layout>

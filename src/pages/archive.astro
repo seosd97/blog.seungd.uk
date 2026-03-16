@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import MenuLines from "../components/MenuLines.astro";
 import { pageWrapper, pageTitle } from "../styles/page.css";
 import * as archive from "../styles/archive.css";
 import { SITE_TITLE } from "../consts";
@@ -30,6 +31,7 @@ const formatDate = (date: Date) => {
 <Layout title={`Archive — ${SITE_TITLE}`}>
   <div class={pageWrapper}>
     <h1 class={pageTitle}>Archive</h1>
+    <MenuLines />
 
     {years.map((year) => (
       <section key={year} class={archive.yearSection}>

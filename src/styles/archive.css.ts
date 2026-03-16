@@ -11,7 +11,7 @@ export const yearSection = style({
 });
 
 export const yearHeading = style([
-  textStyles.heading3,
+  textStyles.heading2,
   {
     fontFamily: FONT_DISPLAY,
     fontWeight: typographyVars.weight[600],
@@ -30,13 +30,13 @@ export const articleList = style({
 export const articleItem = style({
   display: "flex",
   alignItems: "baseline",
-  gap: "0.75rem",
-  paddingTop: "0.25rem",
-  paddingBottom: "0.25rem",
+  gap: layoutVars.space.md,
+  paddingTop: layoutVars.space.xs,
+  paddingBottom: layoutVars.space.xs,
 });
 
 export const articleDate = style([
-  textStyles.caption2,
+  textStyles.caption3,
   {
     fontVariantNumeric: "tabular-nums",
     color: themeVars.text.muted,
@@ -45,7 +45,7 @@ export const articleDate = style([
 ]);
 
 export const articleLink = style([
-  textStyles.body3,
+  textStyles.caption1,
   {
     fontFamily: FONT_DISPLAY,
     letterSpacing: typographyVars.tracking[200],

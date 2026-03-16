@@ -3,57 +3,34 @@ import { style } from "@vanilla-extract/css";
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 import { typographyVars } from "../styles/typography.css";
-import { textStyles } from "../styles/typography.semantic.css";
-import { CONTAINER_WIDE, FONT_DISPLAY } from "../styles/tokens";
-
-export const header = style({
-  width: CONTAINER_WIDE,
-  margin: "0 auto",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  gap: layoutVars.space.md,
-  paddingTop: layoutVars.space.md,
-  paddingBottom: layoutVars.space.md,
-});
-
-export const logo = style([
-  textStyles.title2,
-  {
-    fontFamily: FONT_DISPLAY,
-    fontWeight: typographyVars.weight[600],
-    letterSpacing: typographyVars.tracking[100],
-    lineHeight: typographyVars.lineHeight[100],
-    color: themeVars.text.strong,
-  },
-]);
-
-export const rightGroup = style({
-  display: "flex",
-  alignItems: "center",
-  gap: layoutVars.space.sm,
-});
+import { FONT_DISPLAY } from "../styles/tokens";
 
 export const menuBtn = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   gap: "4px",
-  width: "1.75rem",
-  height: "1.75rem",
-  padding: "4px",
+  width: "2.75rem",
+  padding: 0,
   border: "none",
   background: "none",
   cursor: "pointer",
   color: themeVars.text.strong,
+  marginBottom: layoutVars.space.xl,
 });
 
 export const menuLine = style({
   display: "block",
-  width: "100%",
-  height: "1.5px",
+  height: "1px",
   backgroundColor: "currentColor",
   transition: "background-color 160ms ease",
+  selectors: {
+    "&:nth-child(1)": { width: "100%" },
+    "&:nth-child(2)": { width: "80%" },
+    "&:nth-child(3)": { width: "100%" },
+    "&:nth-child(4)": { width: "65%" },
+    "&:nth-child(5)": { width: "90%" },
+  },
 });
 
 export const overlay = style({
@@ -108,10 +85,10 @@ export const overlayNav = style({
 });
 
 export const overlayNavLink = style({
-  fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+  fontSize: typographyVars.size[1300],
   fontFamily: FONT_DISPLAY,
   fontWeight: typographyVars.weight[600],
-  lineHeight: 1.4,
+  lineHeight: typographyVars.lineHeight[400],
   color: themeVars.text.strong,
   textDecoration: "none",
   transition: "color 160ms ease",
@@ -124,12 +101,18 @@ export const overlayNavLinkActive = style({
   color: themeVars.text.muted,
 });
 
+export const overlayFooter = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginTop: "auto",
+  paddingBottom: layoutVars.space.lg,
+});
+
 export const overlaySocial = style({
   display: "flex",
   alignItems: "center",
   gap: layoutVars.space.md,
-  marginTop: "auto",
-  paddingBottom: layoutVars.space.lg,
 });
 
 export const overlaySocialLink = style({

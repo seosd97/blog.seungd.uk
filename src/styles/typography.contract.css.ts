@@ -29,6 +29,7 @@ export const typographyVars = createGlobalThemeContract(
       600: null,
       700: null,
       800: null,
+      850: null,
       900: null,
     },
     tracking: {

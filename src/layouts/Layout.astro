@@ -70,8 +70,10 @@ const themeScript = `
   </head>
   <body>
     <a href="#main-content" class={skipLink}>Skip to content</a>
-    <Header />
-    <main id="main-content"><slot /></main>
+    <main id="main-content">
+      <slot />
+    </main>
     <Footer />
+    <Header />
   </body>
 </html>

@@ -33,6 +33,7 @@ createGlobalTheme(":root", typographyVars, {
     600: "1.6",
     700: "1.62",
     800: "1.64",
+    850: "1.7",
     900: "1.8",
   },
   tracking: {
