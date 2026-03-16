@@ -2,44 +2,45 @@ import { globalStyle, style } from "@vanilla-extract/css";
 
 import { layoutVars } from "./layout.css";
 import { themeVars } from "./theme.css";
+import { typographyVars } from "./typography.css";
+import { textStyles } from "./typography.semantic.css";
 
-// Prose container — body at 1rem (16px)
-export const prose = style({
-  maxWidth: "72ch",
-  fontSize: "1rem",
-  lineHeight: 1.8,
-  color: themeVars.text.default,
-});
+export const prose = style([
+  textStyles.body1,
+  {
+    maxWidth: "72ch",
+    color: themeVars.text.default,
+  },
+]);
 
 globalStyle(`${prose} p`, {
   marginBottom: layoutVars.space.md,
 });
 
-// Headings — only override what global h1-h4 reset doesn't cover
 globalStyle(`${prose} h2`, {
-  fontSize: "1.375rem",
-  lineHeight: 1.3,
-  letterSpacing: "-0.02em",
+  fontSize: typographyVars.size[1000],
+  lineHeight: typographyVars.lineHeight[200],
+  letterSpacing: typographyVars.tracking[100],
   marginTop: layoutVars.space.lg,
   marginBottom: layoutVars.space.sm,
 });
 
 globalStyle(`${prose} h3`, {
-  fontSize: "1.125rem",
-  lineHeight: 1.35,
-  letterSpacing: "-0.015em",
+  fontSize: typographyVars.size[800],
+  lineHeight: typographyVars.lineHeight[300],
+  letterSpacing: typographyVars.tracking[200],
   marginTop: layoutVars.space.lg,
   marginBottom: layoutVars.space.xs,
 });
 
 globalStyle(`${prose} h4`, {
-  fontSize: "1rem",
-  lineHeight: 1.4,
+  fontSize: typographyVars.size[700],
+  lineHeight: typographyVars.lineHeight[400],
+  letterSpacing: typographyVars.tracking[100],
   marginTop: layoutVars.space.md,
   marginBottom: layoutVars.space.xs,
 });
 
-// Must come after heading rules — same specificity, last wins
 globalStyle(`${prose} > :first-child`, {
   marginTop: 0,
 });
@@ -52,7 +53,7 @@ globalStyle(`${prose} blockquote`, {
   marginRight: 0,
   marginBottom: layoutVars.space.md,
   fontStyle: "italic",
-  fontSize: "0.875rem",
+  fontSize: typographyVars.size[400],
   color: themeVars.text.soft,
 });
 
@@ -79,8 +80,8 @@ globalStyle(`${prose} pre`, {
 });
 
 globalStyle(`${prose} pre code`, {
-  fontSize: "0.8125rem",
-  lineHeight: 1.6,
+  fontSize: typographyVars.size[300],
+  lineHeight: typographyVars.lineHeight[600],
   background: "none",
   padding: 0,
   borderRadius: 0,
@@ -88,7 +89,6 @@ globalStyle(`${prose} pre code`, {
 });
 
 globalStyle(`${prose} :not(pre) > code`, {
-  fontSize: "0.875em",
   backgroundColor: themeVars.code.inlineBg,
   padding: "0.125em 0.375em",
   borderRadius: layoutVars.radius.sm,
@@ -102,7 +102,6 @@ globalStyle(`${prose} hr`, {
   marginBottom: layoutVars.space.lg,
 });
 
-// Only the hover underline — base a styles come from global.css.ts
 globalStyle(`${prose} a:hover`, {
   textDecoration: "underline",
 });

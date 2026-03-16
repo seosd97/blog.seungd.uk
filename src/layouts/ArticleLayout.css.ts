@@ -2,19 +2,19 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
+import { typographyVars } from "../styles/typography.css";
+import { textStyles } from "../styles/typography.semantic.css";
 import { CONTAINER_NARROW } from "../styles/tokens";
 
-export const articleTitle = style({
-  fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
-  lineHeight: 1.2,
-});
+export const articleTitle = style(textStyles.display);
 
-export const metadata = style({
-  fontSize: "0.75rem",
-  fontWeight: 400,
-  lineHeight: 1.5,
-  color: themeVars.text.muted,
-});
+export const metadata = style([
+  textStyles.caption2,
+  {
+    fontWeight: typographyVars.weight[400],
+    color: themeVars.text.muted,
+  },
+]);
 
 export const article = style({
   width: CONTAINER_NARROW,
@@ -35,10 +35,12 @@ export const footer = style({
   paddingTop: "0.625rem",
 });
 
-export const backLink = style({
-  color: themeVars.text.muted,
-  fontSize: "0.75rem",
-  ":hover": {
-    color: themeVars.link.hover,
+export const backLink = style([
+  textStyles.caption2,
+  {
+    color: themeVars.text.muted,
+    ":hover": {
+      color: themeVars.link.hover,
+    },
   },
-});
+]);

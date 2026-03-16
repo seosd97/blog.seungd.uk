@@ -1,6 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "./layout.css";
+import { typographyVars } from "./typography.css";
+import { textStyles } from "./typography.semantic.css";
 import { CONTAINER_NARROW, CONTAINER_WIDE } from "./tokens";
 
 export const pageWrapper = style({
@@ -17,8 +19,10 @@ export const pageWrapperWide = style({
   paddingBottom: layoutVars.space.md,
 });
 
-export const pageTitle = style({
-  fontSize: "1.375rem",
-  lineHeight: 1.2,
-  marginBottom: layoutVars.space.lg,
-});
+export const pageTitle = style([
+  textStyles.heading1,
+  {
+    lineHeight: typographyVars.lineHeight[100],
+    marginBottom: layoutVars.space.lg,
+  },
+]);

@@ -35,16 +35,37 @@ const buttonContract = {
   text: null,
 } as const;
 
+const cobaltContract = {
+  ...scaleContract,
+  "300a2": null,
+  "300a18": null,
+  "400a2": null,
+  "400a4": null,
+  "400a7": null,
+  "400a8": null,
+  "400a10": null,
+  "400a14": null,
+  "400a16": null,
+  "400a18": null,
+  "500a10": null,
+  "950a92": null,
+} as const;
+
+const amberContract = {
+  ...scaleContract,
+  "400a12": null,
+} as const;
+
 const colorContract = {
   sand: neutralScaleContract,
   lilac: scaleContract,
   ice: scaleContract,
   night: scaleContract,
-  cobalt: scaleContract,
+  cobalt: cobaltContract,
   iris: scaleContract,
   silver: scaleContract,
   green: scaleContract,
-  amber: scaleContract,
+  amber: amberContract,
   red: scaleContract,
   sky: scaleContract,
 } as const;

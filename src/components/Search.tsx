@@ -1,7 +1,17 @@
 import { useState } from "react";
 import * as styles from "./Search.css";
 
-export default function Search({ onSearch }: { onSearch: (query: string) => void }) {
+interface SearchProps {
+  onSearch: (query: string) => void;
+  placeholder?: string;
+  ariaLabel?: string;
+}
+
+export default function Search({
+  onSearch,
+  placeholder = "Search articles...",
+  ariaLabel = "Search articles",
+}: SearchProps) {
   const [value, setValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,8 +25,8 @@ export default function Search({ onSearch }: { onSearch: (query: string) => void
       <input
         type="text"
         className={styles.input}
-        placeholder="Search articles..."
-        aria-label="검색"
+        placeholder={placeholder}
+        aria-label={ariaLabel}
         value={value}
         onChange={handleChange}
       />

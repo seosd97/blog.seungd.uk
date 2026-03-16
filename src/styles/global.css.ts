@@ -1,11 +1,12 @@
 import { globalKeyframes, globalStyle } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
+import { typographyVars } from "./typography.css";
 import { FONT_BODY, FONT_DISPLAY, FONT_MONO } from "./tokens";
 
 // html bg needed for iOS overscroll color
 globalStyle("html", {
-  fontSize: "16px",
+  fontSize: typographyVars.root.size,
   backgroundColor: themeVars.bg.canvas,
   minHeight: "100%",
 });
@@ -14,9 +15,12 @@ globalStyle("body", {
   margin: 0,
   minHeight: "100vh",
   backgroundColor: themeVars.bg.canvas,
+  backgroundImage: themeVars.gradient.panel,
+  backgroundRepeat: "no-repeat",
+  backgroundAttachment: "fixed",
   color: themeVars.text.default,
   fontFamily: FONT_BODY,
-  lineHeight: 1.6,
+  lineHeight: typographyVars.lineHeight[800],
   textRendering: "optimizeLegibility",
   transition: "background-color 180ms ease, color 180ms ease",
 });
@@ -70,8 +74,8 @@ globalStyle("::selection", {
 globalStyle("h1, h2, h3, h4", {
   color: themeVars.text.strong,
   fontFamily: FONT_DISPLAY,
-  fontWeight: "600",
-  letterSpacing: "-0.02em",
+  fontWeight: typographyVars.weight[600],
+  letterSpacing: typographyVars.tracking[100],
   margin: 0,
 });
 
