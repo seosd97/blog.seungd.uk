@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "./layout.css";
+import { CONTAINER_NARROW, CONTAINER_WIDE, FONT_DISPLAY } from "./tokens";
 import { typographyVars } from "./typography.css";
 import { textStyles } from "./typography.semantic.css";
-import { CONTAINER_NARROW, CONTAINER_WIDE, FONT_DISPLAY } from "./tokens";
 
 export const pageWrapper = style({
   width: CONTAINER_NARROW,

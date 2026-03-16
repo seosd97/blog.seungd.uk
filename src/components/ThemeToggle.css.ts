@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
@@ -29,3 +29,9 @@ export const themeToggleBtn = style({
     borderRadius: "2px",
   },
 });
+
+export const iconSun = style({ display: "none" });
+export const iconMoon = style({ display: "none" });
+
+globalStyle(`:root[data-theme="light"] .${iconSun}`, { display: "block" });
+globalStyle(`:root[data-theme="dark"] .${iconMoon}`, { display: "block" });

@@ -2,9 +2,9 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
+import { CONTAINER_NARROW } from "../styles/tokens";
 import { typographyVars } from "../styles/typography.css";
 import { textStyles } from "../styles/typography.semantic.css";
-import { CONTAINER_NARROW } from "../styles/tokens";
 
 export const articleTitle = style(textStyles.display);
 

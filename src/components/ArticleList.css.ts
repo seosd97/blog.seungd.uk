@@ -2,9 +2,9 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
+import { FONT_DISPLAY } from "../styles/tokens";
 import { typographyVars } from "../styles/typography.css";
 import { textStyles } from "../styles/typography.semantic.css";
-import { FONT_DISPLAY } from "../styles/tokens";
 
 export const listHeader = style({
   display: "flex",

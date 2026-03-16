@@ -1,0 +1,30 @@
+---
+import { Github, Twitter } from "lucide-astro";
+import { SOCIAL_LINKS } from "../constants";
+
+interface Props {
+  size?: number;
+  linkClass?: string;
+}
+
+const { size = 16, linkClass } = Astro.props;
+---
+
+<a
+  href={SOCIAL_LINKS.twitter}
+  class={linkClass}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="X (Twitter)"
+>
+  <Twitter size={size} />
+</a>
+<a
+  href={SOCIAL_LINKS.github}
+  class={linkClass}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="GitHub"
+>
+  <Github size={size} />
+</a>

@@ -2,35 +2,28 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
-import { typographyVars } from "../styles/typography.css";
 import { FONT_DISPLAY } from "../styles/tokens";
+import { typographyVars } from "../styles/typography.css";
 
 export const menuBtn = style({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  gap: "4px",
+  position: "relative",
   width: "2.75rem",
+  height: "37px",
   padding: 0,
   border: "none",
   background: "none",
   cursor: "pointer",
-  color: themeVars.text.strong,
+  color: themeVars.text.soft,
   marginBottom: layoutVars.space.xl,
 });
 
 export const menuLine = style({
-  display: "block",
+  position: "absolute",
+  left: 0,
+  width: "100%",
   height: "1px",
   backgroundColor: "currentColor",
   transition: "background-color 160ms ease",
-  selectors: {
-    "&:nth-child(1)": { width: "100%" },
-    "&:nth-child(2)": { width: "80%" },
-    "&:nth-child(3)": { width: "100%" },
-    "&:nth-child(4)": { width: "65%" },
-    "&:nth-child(5)": { width: "90%" },
-  },
 });
 
 export const overlay = style({

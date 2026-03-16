@@ -1,11 +1,17 @@
 ---
 import { menuBtn, menuLine } from "./Header.css";
+
+const gap = 8;
+const lineCount = 5;
+const tops = Array.from({ length: lineCount }, (_, i) => i * (gap + 1));
 ---
 
-<button id="menu-open" class={menuBtn} type="button" aria-label="Open menu" aria-expanded="false">
-  <span class={menuLine}></span>
-  <span class={menuLine}></span>
-  <span class={menuLine}></span>
-  <span class={menuLine}></span>
-  <span class={menuLine}></span>
+<button
+  class={menuBtn}
+  type="button"
+  aria-label="Open menu"
+  aria-expanded="false"
+  data-menu-trigger
+>
+  {tops.map((top) => <span class={menuLine} style={`top:${top}px`} />)}
 </button>

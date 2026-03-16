@@ -1,20 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import MenuLines from "../components/MenuLines.astro";
-import { pageWrapper, pageTitle } from "../styles/page.css";
+import { APP_METADATA } from "../constants";
+import Layout from "../layouts/Layout.astro";
+import { pageTitle, pageWrapper } from "../styles/page.css";
 import { prose } from "../styles/prose.css";
-import { SITE_TITLE } from "../consts";
 ---
 
-<Layout title={`About — ${SITE_TITLE}`}>
+<Layout title={`About — ${APP_METADATA.title}`}>
   <div class={pageWrapper}>
     <h1 class={pageTitle}>About</h1>
     <MenuLines />
 
     <div class={prose}>
-      <p>
-        안녕하세요. 소프트웨어를 만들며 배운 것들을 천천히 정리하는 공간입니다.
-      </p>
+      <p>안녕하세요. 소프트웨어를 만들며 배운 것들을 천천히 정리하는 공간입니다.</p>
       <p>
         주로 웹 개발과 관련된 이야기를 다루지만, 때로는 읽은 책이나 일상에서 떠오른 생각도 함께
         기록합니다. 완성된 글보다는 과정 속의 메모에 가까운 글이 많습니다.

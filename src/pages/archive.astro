@@ -1,14 +1,13 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import { format } from "date-fns";
 import MenuLines from "../components/MenuLines.astro";
-import { pageWrapper, pageTitle } from "../styles/page.css";
+import { APP_METADATA } from "../constants";
+import Layout from "../layouts/Layout.astro";
 import * as archive from "../styles/archive.css";
-import { SITE_TITLE } from "../consts";
+import { pageTitle, pageWrapper } from "../styles/page.css";
+import { getPublishedArticles } from "../utils/articles";
 
-const articles = (await getCollection("articles"))
-  .filter((article) => !article.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const articles = await getPublishedArticles();
 
 const articlesByYear = articles.reduce<Record<number, typeof articles>>((acc, article) => {
   const year = article.data.date.getFullYear();
@@ -20,15 +19,9 @@ const articlesByYear = articles.reduce<Record<number, typeof articles>>((acc, ar
 const years = Object.keys(articlesByYear)
   .map(Number)
   .sort((a, b) => b - a);
-
-const formatDate = (date: Date) => {
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${month}.${day}`;
-};
 ---
 
-<Layout title={`Archive — ${SITE_TITLE}`}>
+<Layout title={`Archive — ${APP_METADATA.title}`}>
   <div class={pageWrapper}>
     <h1 class={pageTitle}>Archive</h1>
     <MenuLines />
@@ -39,7 +32,7 @@ const formatDate = (date: Date) => {
         <ul class={archive.articleList}>
           {articlesByYear[year].map((article) => (
             <li key={article.id} class={archive.articleItem}>
-              <time class={archive.articleDate}>{formatDate(article.data.date)}</time>
+              <time class={archive.articleDate}>{format(article.data.date, "MM.dd")}</time>
               <a class={archive.articleLink} href={`/articles/${article.id}`}>
                 {article.data.title}
               </a>

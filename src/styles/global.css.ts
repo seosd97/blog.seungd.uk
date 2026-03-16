@@ -1,8 +1,8 @@
 import { globalKeyframes, globalStyle } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
-import { typographyVars } from "./typography.css";
 import { FONT_BODY, FONT_DISPLAY, FONT_MONO } from "./tokens";
+import { typographyVars } from "./typography.css";
 
 // html bg needed for iOS overscroll color
 globalStyle("html", {
@@ -44,11 +44,14 @@ globalStyle("a:hover", {
   color: themeVars.link.hover,
 });
 
-globalStyle("a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible", {
-  outline: `2px solid ${themeVars.accent.primary}`,
-  outlineOffset: "2px",
-  borderRadius: "2px",
-});
+globalStyle(
+  "a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible",
+  {
+    outline: `2px solid ${themeVars.accent.primary}`,
+    outlineOffset: "2px",
+    borderRadius: "2px",
+  },
+);
 
 globalStyle("button, input, textarea, select", {
   font: "inherit",

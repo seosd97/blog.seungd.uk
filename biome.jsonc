@@ -62,6 +62,19 @@
       "trailingCommas": "all"
     }
   },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            // Astro is server-rendered, key prop is unnecessary in iterations
+            "useJsxKeyInIterable": "off"
+          }
+        }
+      }
+    }
+  ],
   "html": {
     "experimentalFullSupportEnabled": true,
     "formatter": {

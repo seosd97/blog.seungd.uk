@@ -1,7 +1,8 @@
+import { format } from "date-fns";
 import { useState } from "react";
-import Search from "./Search";
 import * as styles from "./ArticleList.css";
-import { formatDate } from "../utils/format";
+import ErrorBoundary from "./ErrorBoundary";
+import Search from "./Search";
 
 interface Article {
   title: string;
@@ -12,7 +13,7 @@ interface Article {
   readingTime: number;
 }
 
-export default function ArticleList({ articles }: { articles: Article[] }) {
+function ArticleListInner({ articles }: { articles: Article[] }) {
   const [query, setQuery] = useState("");
 
   const q = query.toLowerCase().trim();
@@ -42,7 +43,7 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
         {filtered.map((article) => (
           <article className={styles.item} key={article.slug}>
             <time className={styles.date} dateTime={article.date}>
-              {formatDate(new Date(article.date))}
+              {format(new Date(article.date), "yyyy.MM.dd")}
             </time>
 
             <a href={`/articles/${article.slug}`} className={styles.title}>
@@ -69,10 +70,16 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
           </article>
         ))}
 
-        {filtered.length === 0 && (
-          <p className={styles.emptyState}>No matching entries found.</p>
-        )}
+        {filtered.length === 0 && <p className={styles.emptyState}>No matching entries found.</p>}
       </div>
     </>
+  );
+}
+
+export default function ArticleList({ articles }: { articles: Article[] }) {
+  return (
+    <ErrorBoundary>
+      <ArticleListInner articles={articles} />
+    </ErrorBoundary>
   );
 }

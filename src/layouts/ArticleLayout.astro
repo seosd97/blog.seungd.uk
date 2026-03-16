@@ -1,10 +1,10 @@
 ---
+import { format } from "date-fns";
+import MenuLines from "../components/MenuLines.astro";
+import { APP_METADATA } from "../constants";
 import { prose } from "../styles/prose.css";
 import * as styles from "./ArticleLayout.css";
 import Layout from "./Layout.astro";
-import MenuLines from "../components/MenuLines.astro";
-import { AUTHOR } from "../consts";
-import { formatDate } from "../utils/format";
 
 interface Props {
   title: string;
@@ -22,9 +22,9 @@ const { title, description, date, tags } = Astro.props;
     <header class={styles.header}>
       <h1 class={styles.articleTitle}>{title}</h1>
       <div class={styles.metadata}>
-        <span>{AUTHOR}</span>
+        <span>{APP_METADATA.author}</span>
         <span> · </span>
-        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <time datetime={date.toISOString()}>{format(date, "yyyy.MM.dd")}</time>
         {tags.length > 0 && (
           <span> · {tags.join(", ")}</span>
         )}

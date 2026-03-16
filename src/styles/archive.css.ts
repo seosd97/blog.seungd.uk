@@ -2,9 +2,9 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "./layout.css";
 import { themeVars } from "./theme.css";
+import { FONT_DISPLAY } from "./tokens";
 import { typographyVars } from "./typography.css";
 import { textStyles } from "./typography.semantic.css";
-import { FONT_DISPLAY } from "./tokens";
 
 export const yearSection = style({
   marginBottom: layoutVars.space.xl,

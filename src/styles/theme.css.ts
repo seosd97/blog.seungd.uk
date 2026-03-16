@@ -1,8 +1,4 @@
-import {
-  assignVars,
-  createGlobalTheme,
-  globalStyle,
-} from "@vanilla-extract/css";
+import { assignVars, createGlobalTheme, globalStyle } from "@vanilla-extract/css";
 
 import { colorVars, themeVars } from "./theme.contract.css";
 
@@ -379,6 +375,3 @@ globalStyle(':root[data-theme="dark"]', {
   colorScheme: "dark",
   vars: assignVars(themeVars, darkTheme),
 });
-
-export const defaultTheme = "light";
-export const themeStorageKey = "blog-theme";
