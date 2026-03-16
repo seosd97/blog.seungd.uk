@@ -1,21 +1,20 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
-import type { APIContext } from "astro";
+import { type APIContext } from "astro";
+import { APP_METADATA } from "../constants";
+import { getPublishedArticles } from "../utils/articles";
 
 export async function GET(context: APIContext) {
-  const posts = (await getCollection("posts"))
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const articles = await getPublishedArticles();
 
   return rss({
-    title: "seosd blog",
-    description: "개발, 디자인, 그리고 일상의 기록",
-    site: context.site!,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.description,
-      link: `/posts/${post.id}/`,
+    title: APP_METADATA.name,
+    description: APP_METADATA.description,
+    site: context.site ?? new URL("https://blog.seungd.uk"),
+    items: articles.map((article) => ({
+      title: article.data.title,
+      pubDate: article.data.date,
+      description: article.data.description,
+      link: `/articles/${article.id}/`,
     })),
   });
 }

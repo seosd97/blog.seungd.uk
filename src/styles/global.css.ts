@@ -1,13 +1,12 @@
 import { globalKeyframes, globalStyle } from "@vanilla-extract/css";
 
 import { themeVars } from "./theme.css";
+import { FONT_BODY, FONT_DISPLAY, FONT_MONO } from "./tokens";
+import { typographyVars } from "./typography.css";
 
-const bodyFont = '"Avenir Next", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif';
-const displayFont = '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif';
-const monoFont = '"SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace';
-
+// html bg needed for iOS overscroll color
 globalStyle("html", {
-  fontSize: "16px",
+  fontSize: typographyVars.root.size,
   backgroundColor: themeVars.bg.canvas,
   minHeight: "100%",
 });
@@ -16,9 +15,12 @@ globalStyle("body", {
   margin: 0,
   minHeight: "100vh",
   backgroundColor: themeVars.bg.canvas,
+  backgroundImage: themeVars.gradient.panel,
+  backgroundRepeat: "no-repeat",
+  backgroundAttachment: "fixed",
   color: themeVars.text.default,
-  fontFamily: bodyFont,
-  lineHeight: 1.6,
+  fontFamily: FONT_BODY,
+  lineHeight: typographyVars.lineHeight[800],
   textRendering: "optimizeLegibility",
   transition: "background-color 180ms ease, color 180ms ease",
 });
@@ -42,6 +44,15 @@ globalStyle("a:hover", {
   color: themeVars.link.hover,
 });
 
+globalStyle(
+  "a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible",
+  {
+    outline: `2px solid ${themeVars.accent.primary}`,
+    outlineOffset: "2px",
+    borderRadius: "2px",
+  },
+);
+
 globalStyle("button, input, textarea, select", {
   font: "inherit",
 });
@@ -51,7 +62,7 @@ globalStyle("strong", {
 });
 
 globalStyle("code, pre", {
-  fontFamily: monoFont,
+  fontFamily: FONT_MONO,
 });
 
 globalStyle("pre", {
@@ -63,11 +74,11 @@ globalStyle("::selection", {
   color: themeVars.selection.text,
 });
 
-globalStyle("h1, h2, h3", {
+globalStyle("h1, h2, h3, h4", {
   color: themeVars.text.strong,
-  fontFamily: displayFont,
-  fontWeight: "600",
-  letterSpacing: "-0.04em",
+  fontFamily: FONT_DISPLAY,
+  fontWeight: typographyVars.weight[600],
+  letterSpacing: typographyVars.tracking[100],
   margin: 0,
 });
 
@@ -76,19 +87,17 @@ globalStyle("p", {
 });
 
 // Page load fade-in animation
-globalKeyframes("fadeInUp", {
+globalKeyframes("fadeIn", {
   from: {
     opacity: 0,
-    transform: "translateY(8px)",
   },
   to: {
     opacity: 1,
-    transform: "translateY(0)",
   },
 });
 
 globalStyle("main", {
-  animation: "fadeInUp 400ms ease-out",
+  animation: "fadeIn 400ms ease-out",
 });
 
 // Shiki dual theme: swap colors in dark mode

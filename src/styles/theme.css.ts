@@ -1,148 +1,8 @@
-import {
-  assignVars,
-  createGlobalTheme,
-  createGlobalThemeContract,
-  globalStyle,
-} from "@vanilla-extract/css";
+import { assignVars, createGlobalTheme, globalStyle } from "@vanilla-extract/css";
 
-const toKebabCase = (value: string) =>
-  value.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
+import { colorVars, themeVars } from "./theme.contract.css";
 
-const scaleContract = {
-  50: null,
-  100: null,
-  200: null,
-  300: null,
-  400: null,
-  500: null,
-  600: null,
-  700: null,
-  800: null,
-  900: null,
-  950: null,
-} as const;
-
-const neutralScaleContract = {
-  0: null,
-  ...scaleContract,
-} as const;
-
-const feedbackContract = {
-  bg: null,
-  border: null,
-  text: null,
-} as const;
-
-const buttonContract = {
-  bg: null,
-  bgHover: null,
-  bgActive: null,
-  text: null,
-} as const;
-
-const colorContract = {
-  sand: neutralScaleContract,
-  lilac: scaleContract,
-  ice: scaleContract,
-  night: scaleContract,
-  cobalt: scaleContract,
-  iris: scaleContract,
-  silver: scaleContract,
-  green: scaleContract,
-  amber: scaleContract,
-  red: scaleContract,
-  sky: scaleContract,
-} as const;
-
-const semanticContract = {
-  bg: {
-    canvas: null,
-    subtle: null,
-    muted: null,
-    elevated: null,
-    inset: null,
-    softPrimary: null,
-    softSecondary: null,
-    overlay: null,
-  },
-  text: {
-    strong: null,
-    default: null,
-    soft: null,
-    muted: null,
-    disabled: null,
-    onAccent: null,
-  },
-  border: {
-    subtle: null,
-    default: null,
-    strong: null,
-  },
-  accent: {
-    primary: null,
-    primaryHover: null,
-    primaryActive: null,
-    secondary: null,
-    secondaryHover: null,
-    secondaryActive: null,
-  },
-  link: {
-    default: null,
-    hover: null,
-    visited: null,
-  },
-  focus: {
-    ring: null,
-  },
-  selection: {
-    bg: null,
-    text: null,
-  },
-  code: {
-    bg: null,
-    border: null,
-    text: null,
-    inlineBg: null,
-  },
-  quote: {
-    bg: null,
-    border: null,
-  },
-  mark: {
-    bg: null,
-    text: null,
-  },
-  feedback: {
-    success: feedbackContract,
-    warning: feedbackContract,
-    danger: feedbackContract,
-    info: feedbackContract,
-  },
-  button: {
-    primary: buttonContract,
-    secondary: buttonContract,
-    ghost: {
-      hover: null,
-      active: null,
-    },
-  },
-  gradient: {
-    hero: null,
-    panel: null,
-  },
-  shadow: {
-    color: null,
-  },
-} as const;
-
-export const colorVars = createGlobalThemeContract(
-  colorContract,
-  (_, path) => `color-${path.map(toKebabCase).join("-")}`,
-);
-
-export const themeVars = createGlobalThemeContract(semanticContract, (_, path) =>
-  path.map(toKebabCase).join("-"),
-);
+export { colorVars, themeVars };
 
 createGlobalTheme(":root", colorVars, {
   sand: {
@@ -159,31 +19,43 @@ createGlobalTheme(":root", colorVars, {
     900: "#2e2d2c",
     950: "#1c1b1a",
   },
-  lilac: {
-    50: "#faf6ff",
-    100: "#f2ebff",
-    200: "#e4d6ff",
-    300: "#d2bbff",
-    400: "#bb9cf9",
-    500: "#a27fe6",
-    600: "#8868c7",
-    700: "#6c4ea3",
-    800: "#50397a",
-    900: "#36264f",
-    950: "#21172f",
+  sumirePrimary: {
+    50: "#F5F7FF",
+    100: "#EDF1FF",
+    200: "#DCE3FF",
+    300: "#C3CFFF",
+    400: "#A2B1F5",
+    500: "#8292E6",
+    600: "#6C79CB",
+    700: "#5A65AB",
+    800: "#404772",
+    900: "#2A2D47",
+    950: "#0E1020",
+    "300a2": "rgb(195 207 255 / 0.02)",
+    "300a18": "rgb(195 207 255 / 0.18)",
+    "400a2": "rgb(162 177 245 / 0.02)",
+    "400a4": "rgb(162 177 245 / 0.04)",
+    "400a7": "rgb(162 177 245 / 0.07)",
+    "400a8": "rgb(162 177 245 / 0.08)",
+    "400a10": "rgb(162 177 245 / 0.10)",
+    "400a14": "rgb(162 177 245 / 0.14)",
+    "400a16": "rgb(162 177 245 / 0.16)",
+    "400a18": "rgb(162 177 245 / 0.18)",
+    "500a10": "rgb(130 146 230 / 0.10)",
+    "950a92": "rgb(14 16 32 / 0.92)",
   },
-  ice: {
-    50: "#f4f9ff",
-    100: "#e9f3ff",
-    200: "#d2e5ff",
-    300: "#b2d3ff",
-    400: "#88b9f5",
-    500: "#629bd8",
-    600: "#4b7db3",
-    700: "#3c628d",
-    800: "#2f4a67",
-    900: "#203141",
-    950: "#121c26",
+  sumireSecondary: {
+    50: "#FBF7FF",
+    100: "#F5EEFF",
+    200: "#EAD9FF",
+    300: "#D9BDFF",
+    400: "#BE97F2",
+    500: "#A475DB",
+    600: "#8A5CBD",
+    700: "#734B9B",
+    800: "#603F7E",
+    900: "#503565",
+    950: "#1C1028",
   },
   night: {
     50: "#f5f2fb",
@@ -197,19 +69,6 @@ createGlobalTheme(":root", colorVars, {
     800: "#342943",
     900: "#1d1727",
     950: "#0e0b13",
-  },
-  cobalt: {
-    50: "#eef4ff",
-    100: "#dbe7ff",
-    200: "#b8ceff",
-    300: "#89adff",
-    400: "#5f87f6",
-    500: "#3a63de",
-    600: "#284bbc",
-    700: "#213c96",
-    800: "#1d3272",
-    900: "#182750",
-    950: "#0d142b",
   },
   iris: {
     50: "#f3efff",
@@ -262,6 +121,7 @@ createGlobalTheme(":root", colorVars, {
     800: "#613b04",
     900: "#452a03",
     950: "#261700",
+    "400a12": "rgb(240 163 33 / 0.12)",
   },
   red: {
     50: "#fff1f1",
@@ -294,56 +154,56 @@ createGlobalTheme(":root", colorVars, {
 const lightTheme = {
   bg: {
     canvas: colorVars.sand[0],
-    subtle: colorVars.ice[50],
-    muted: colorVars.ice[100],
+    subtle: colorVars.sumirePrimary[50],
+    muted: colorVars.sumirePrimary[100],
     elevated: colorVars.sand[0],
-    inset: colorVars.ice[200],
-    softPrimary: colorVars.lilac[50],
-    softSecondary: colorVars.ice[50],
+    inset: colorVars.sumirePrimary[200],
+    softPrimary: colorVars.sumireSecondary[50],
+    softSecondary: colorVars.sumirePrimary[50],
     overlay: "rgb(18 14 32 / 0.48)",
   },
   text: {
     strong: colorVars.night[900],
     default: colorVars.night[800],
     soft: colorVars.night[700],
-    muted: colorVars.silver[600],
+    muted: colorVars.silver[700],
     disabled: colorVars.silver[500],
     onAccent: "#ffffff",
   },
   border: {
-    subtle: colorVars.ice[100],
+    subtle: colorVars.sumirePrimary[100],
     default: colorVars.silver[200],
     strong: colorVars.silver[400],
   },
   accent: {
-    primary: colorVars.lilac[400],
-    primaryHover: colorVars.lilac[500],
-    primaryActive: colorVars.lilac[600],
-    secondary: colorVars.ice[400],
-    secondaryHover: colorVars.ice[500],
-    secondaryActive: colorVars.ice[600],
+    primary: colorVars.sumireSecondary[400],
+    primaryHover: colorVars.sumireSecondary[500],
+    primaryActive: colorVars.sumireSecondary[600],
+    secondary: colorVars.sumirePrimary[400],
+    secondaryHover: colorVars.sumirePrimary[500],
+    secondaryActive: colorVars.sumirePrimary[600],
   },
   link: {
-    default: colorVars.lilac[600],
-    hover: colorVars.lilac[700],
-    visited: colorVars.iris[500],
+    default: colorVars.sumireSecondary[700],
+    hover: colorVars.sumireSecondary[800],
+    visited: colorVars.iris[600],
   },
   focus: {
-    ring: "rgb(187 156 249 / 0.32)",
+    ring: "rgb(190 151 242 / 0.32)",
   },
   selection: {
-    bg: "rgb(187 156 249 / 0.18)",
+    bg: "rgb(190 151 242 / 0.18)",
     text: colorVars.night[900],
   },
   code: {
-    bg: "#f6f9ff",
-    border: colorVars.ice[200],
-    text: colorVars.ice[700],
-    inlineBg: colorVars.ice[50],
+    bg: "#f6f8ff",
+    border: colorVars.sumirePrimary[200],
+    text: colorVars.sumirePrimary[700],
+    inlineBg: colorVars.sumirePrimary[50],
   },
   quote: {
-    bg: colorVars.lilac[50],
-    border: colorVars.lilac[200],
+    bg: colorVars.sumireSecondary[50],
+    border: colorVars.sumireSecondary[200],
   },
   mark: {
     bg: colorVars.amber[100],
@@ -373,25 +233,25 @@ const lightTheme = {
   },
   button: {
     primary: {
-      bg: colorVars.lilac[500],
-      bgHover: colorVars.lilac[600],
-      bgActive: colorVars.lilac[700],
+      bg: colorVars.sumireSecondary[500],
+      bgHover: colorVars.sumireSecondary[600],
+      bgActive: colorVars.sumireSecondary[700],
       text: "#ffffff",
     },
     secondary: {
-      bg: colorVars.ice[50],
-      bgHover: colorVars.ice[100],
-      bgActive: colorVars.ice[200],
+      bg: colorVars.sumirePrimary[50],
+      bgHover: colorVars.sumirePrimary[100],
+      bgActive: colorVars.sumirePrimary[200],
       text: colorVars.night[900],
     },
     ghost: {
-      hover: colorVars.lilac[50],
-      active: colorVars.lilac[100],
+      hover: colorVars.sumireSecondary[50],
+      active: colorVars.sumireSecondary[100],
     },
   },
   gradient: {
-    hero: "linear-gradient(135deg, rgb(187 156 249 / 0.16) 0%, rgb(136 185 245 / 0.20) 100%)",
-    panel: "linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%)",
+    hero: "none",
+    panel: "none",
   },
   shadow: {
     color: "20 22 38",
@@ -400,61 +260,61 @@ const lightTheme = {
 
 const darkTheme = {
   bg: {
-    canvas: "#0d1327",
-    subtle: "#111933",
-    muted: "#162042",
-    elevated: "#18233d",
-    inset: "#0a1021",
-    softPrimary: "rgb(95 135 246 / 0.18)",
-    softSecondary: "rgb(150 119 234 / 0.12)",
-    overlay: "rgb(3 5 11 / 0.76)",
+    canvas: colorVars.sumirePrimary[950],
+    subtle: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 38%, ${colorVars.sumirePrimary[950]})`,
+    muted: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 48%, ${colorVars.sumirePrimary[950]})`,
+    elevated: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 42%, ${colorVars.sumirePrimary[950]})`,
+    inset: colorVars.sumirePrimary[950],
+    softPrimary: colorVars.sumirePrimary["400a2"],
+    softSecondary: colorVars.sumirePrimary["300a2"],
+    overlay: colorVars.sumirePrimary["950a92"],
   },
   text: {
-    strong: "#f0f0ee",
+    strong: colorVars.silver[50],
     default: colorVars.silver[100],
     soft: colorVars.silver[200],
     muted: colorVars.silver[500],
     disabled: colorVars.silver[600],
-    onAccent: "#0d1327",
+    onAccent: colorVars.sumirePrimary[950],
   },
   border: {
-    subtle: "rgb(95 135 246 / 0.14)",
-    default: "rgb(95 135 246 / 0.24)",
-    strong: "rgb(150 119 234 / 0.28)",
+    subtle: colorVars.sumirePrimary["400a8"],
+    default: colorVars.sumirePrimary["400a14"],
+    strong: colorVars.sumirePrimary["300a18"],
   },
   accent: {
-    primary: colorVars.cobalt[400],
-    primaryHover: colorVars.cobalt[300],
-    primaryActive: colorVars.cobalt[500],
-    secondary: colorVars.iris[400],
-    secondaryHover: colorVars.iris[300],
-    secondaryActive: colorVars.iris[500],
+    primary: colorVars.sumireSecondary[300],
+    primaryHover: colorVars.sumireSecondary[200],
+    primaryActive: colorVars.sumireSecondary[400],
+    secondary: colorVars.sumireSecondary[400],
+    secondaryHover: colorVars.sumireSecondary[300],
+    secondaryActive: colorVars.sumireSecondary[500],
   },
   link: {
-    default: colorVars.cobalt[200],
-    hover: colorVars.cobalt[100],
-    visited: colorVars.iris[200],
+    default: colorVars.sumireSecondary[300],
+    hover: colorVars.sumireSecondary[200],
+    visited: colorVars.sumireSecondary[400],
   },
   focus: {
-    ring: "rgb(150 119 234 / 0.36)",
+    ring: "rgb(190 151 242 / 0.18)",
   },
   selection: {
-    bg: "rgb(58 99 222 / 0.24)",
-    text: "#f0f0ee",
+    bg: "rgb(190 151 242 / 0.18)",
+    text: colorVars.silver[50],
   },
   code: {
-    bg: "#101735",
-    border: "rgb(95 135 246 / 0.22)",
-    text: colorVars.cobalt[100],
-    inlineBg: "rgb(95 135 246 / 0.12)",
+    bg: colorVars.sumirePrimary[950],
+    border: colorVars.sumirePrimary["400a16"],
+    text: colorVars.sumirePrimary[100],
+    inlineBg: colorVars.sumirePrimary["400a8"],
   },
   quote: {
-    bg: "rgb(150 119 234 / 0.10)",
-    border: colorVars.iris[400],
+    bg: colorVars.sumirePrimary["400a4"],
+    border: colorVars.sumireSecondary[400],
   },
   mark: {
-    bg: "rgb(240 163 33 / 0.18)",
-    text: "#f0f0ee",
+    bg: colorVars.amber["400a12"],
+    text: colorVars.silver[50],
   },
   feedback: {
     success: {
@@ -480,28 +340,28 @@ const darkTheme = {
   },
   button: {
     primary: {
-      bg: colorVars.cobalt[400],
-      bgHover: colorVars.cobalt[300],
-      bgActive: colorVars.cobalt[500],
-      text: "#0d1327",
+      bg: colorVars.sumireSecondary[400],
+      bgHover: colorVars.sumireSecondary[300],
+      bgActive: colorVars.sumireSecondary[500],
+      text: colorVars.sumirePrimary[950],
     },
     secondary: {
-      bg: "#162042",
-      bgHover: "#1d2a55",
-      bgActive: "#24356b",
-      text: "#f0f0ee",
+      bg: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 42%, ${colorVars.sumirePrimary[950]})`,
+      bgHover: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 56%, ${colorVars.sumirePrimary[950]})`,
+      bgActive: `color-mix(in srgb, ${colorVars.sumirePrimary[900]} 70%, ${colorVars.sumirePrimary[950]})`,
+      text: colorVars.silver[50],
     },
     ghost: {
-      hover: "rgb(95 135 246 / 0.10)",
-      active: "rgb(150 119 234 / 0.16)",
+      hover: colorVars.sumirePrimary["400a7"],
+      active: colorVars.sumirePrimary["400a10"],
     },
   },
   gradient: {
-    hero: "linear-gradient(135deg, rgb(95 135 246 / 0.24) 0%, rgb(150 119 234 / 0.16) 40%, rgb(13 19 39 / 0.96) 100%)",
-    panel: "linear-gradient(180deg, #172142 0%, #101735 100%)",
+    hero: "none",
+    panel: "none",
   },
   shadow: {
-    color: "3 5 11",
+    color: colorVars.sumirePrimary[950],
   },
 } as const;
 
@@ -515,6 +375,3 @@ globalStyle(':root[data-theme="dark"]', {
   colorScheme: "dark",
   vars: assignVars(themeVars, darkTheme),
 });
-
-export const defaultTheme = "light";
-export const themeStorageKey = "blog-theme";

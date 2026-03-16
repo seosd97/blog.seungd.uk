@@ -1,31 +1,27 @@
 ---
-import { getCollection } from "astro:content";
+import ArticleList from "../components/ArticleList";
+import MenuLines from "../components/MenuLines.astro";
+import { APP_METADATA } from "../constants";
 import Layout from "../layouts/Layout.astro";
-import PostList from "../components/PostList";
-import * as styles from "../styles/home.css";
+import { pageHeading, pageWrapperWide } from "../styles/page.css";
+import { calculateReadingTime, getPublishedArticles } from "../utils/articles";
 
-const posts = (await getCollection("posts"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const articles = await getPublishedArticles();
 
-const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
-
-const serialized = posts.map((post) => {
-  const charCount = post.data.description.length;
-  const words = Math.ceil(charCount / 3.5);
-  return {
-    title: post.data.title,
-    description: post.data.description,
-    date: post.data.date.toISOString().slice(0, 10),
-    tags: post.data.tags,
-    slug: post.id,
-    readingTime: Math.max(1, Math.ceil(words / 200)),
-  };
-});
+const serialized = articles.map((article) => ({
+  title: article.data.title,
+  description: article.data.description,
+  date: article.data.date.toISOString().slice(0, 10),
+  tags: article.data.tags,
+  slug: article.id,
+  readingTime: calculateReadingTime(article.data.description),
+}));
 ---
 
-<Layout title="seosd의 블로그">
-  <div class={styles.wrapper}>
-    <PostList client:load posts={serialized} allTags={allTags} />
+<Layout title={APP_METADATA.title}>
+  <div class={pageWrapperWide}>
+    <h1 class={pageHeading}>Articles</h1>
+    <MenuLines />
+    <ArticleList client:load articles={serialized} />
   </div>
 </Layout>

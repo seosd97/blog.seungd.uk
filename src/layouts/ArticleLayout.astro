@@ -1,6 +1,9 @@
 ---
-import { metadata, postTitle, prose } from "../styles/editorial.css";
-import * as styles from "../styles/post-layout.css";
+import { format } from "date-fns";
+import MenuLines from "../components/MenuLines.astro";
+import { APP_METADATA } from "../constants";
+import { prose } from "../styles/prose.css";
+import * as styles from "./ArticleLayout.css";
 import Layout from "./Layout.astro";
 
 interface Props {
@@ -11,22 +14,17 @@ interface Props {
 }
 
 const { title, description, date, tags } = Astro.props;
-
-const formattedDate = [
-  date.getFullYear(),
-  String(date.getMonth() + 1).padStart(2, "0"),
-  String(date.getDate()).padStart(2, "0"),
-].join(".");
 ---
 
 <Layout title={title} description={description} ogType="article" publishedDate={date.toISOString()}>
   <article class={styles.article}>
+    <MenuLines />
     <header class={styles.header}>
-      <h1 class={postTitle}>{title}</h1>
-      <div class={metadata}>
-        <span>seosd</span>
+      <h1 class={styles.articleTitle}>{title}</h1>
+      <div class={styles.metadata}>
+        <span>{APP_METADATA.author}</span>
         <span> · </span>
-        <time datetime={date.toISOString()}>{formattedDate}</time>
+        <time datetime={date.toISOString()}>{format(date, "yyyy.MM.dd")}</time>
         {tags.length > 0 && (
           <span> · {tags.join(", ")}</span>
         )}

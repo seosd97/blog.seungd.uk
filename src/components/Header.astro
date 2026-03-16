@@ -1,15 +1,95 @@
 ---
+import { X } from "lucide-astro";
+import {
+  closeBtn,
+  overlay,
+  overlayFooter,
+  overlayInner,
+  overlayNav,
+  overlayNavLink,
+  overlayNavLinkActive,
+  overlaySocial,
+  overlaySocialLink,
+} from "./Header.css";
+import SocialLinks from "./SocialLinks.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import { header, logo, rightGroup, nav, navLink } from "../styles/header.css";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
-<header class={header}>
-  <a href="/" class={logo}>seosd blog</a>
-  <div class={rightGroup}>
-    <nav class={nav}>
-      <a href="/archive" class={navLink}>Archive</a>
-      <a href="/about" class={navLink}>About</a>
-    </nav>
-    <ThemeToggle />
+<menu-overlay>
+  <div class={overlay} data-open="false" role="dialog" aria-label="Navigation menu">
+    <div class={overlayInner}>
+      <button class={closeBtn} type="button" aria-label="Close menu" data-menu-close>
+        <X size={24} />
+      </button>
+
+      <nav class={overlayNav} aria-label="Primary">
+        <a href="/" class:list={[overlayNavLink, isActive("/") && overlayNavLinkActive]}
+          >Articles</a
+        >
+        <a
+          href="/archive"
+          class:list={[overlayNavLink, isActive("/archive") && overlayNavLinkActive]}
+          >Archive</a
+        >
+        <a href="/about" class:list={[overlayNavLink, isActive("/about") && overlayNavLinkActive]}
+          >About</a
+        >
+      </nav>
+
+      <div class={overlayFooter}>
+        <div class={overlaySocial}><SocialLinks size={20} linkClass={overlaySocialLink} /></div>
+        <ThemeToggle />
+      </div>
+    </div>
   </div>
-</header>
+</menu-overlay>
+
+<script>
+class MenuOverlay extends HTMLElement {
+  #cleanup: (() => void) | null = null;
+
+  connectedCallback() {
+    const trigger = document.querySelector<HTMLButtonElement>("[data-menu-trigger]");
+    const closeBtn = this.querySelector<HTMLButtonElement>("[data-menu-close]");
+    const panel = this.querySelector<HTMLElement>("[data-open]");
+
+    const open = () => {
+      panel?.setAttribute("data-open", "true");
+      trigger?.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+
+    const close = () => {
+      panel?.setAttribute("data-open", "false");
+      trigger?.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && panel?.getAttribute("data-open") === "true") {
+        close();
+      }
+    };
+
+    trigger?.addEventListener("click", open);
+    closeBtn?.addEventListener("click", close);
+    document.addEventListener("keydown", onKeydown);
+
+    this.#cleanup = () => {
+      trigger?.removeEventListener("click", open);
+      closeBtn?.removeEventListener("click", close);
+      document.removeEventListener("keydown", onKeydown);
+    };
+  }
+
+  disconnectedCallback() {
+    this.#cleanup?.();
+  }
+}
+
+customElements.define("menu-overlay", MenuOverlay);
+</script>
