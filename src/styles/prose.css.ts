@@ -7,7 +7,7 @@ import { typographyVars } from "./typography.css";
 export const prose = style({
   fontSize: typographyVars.size[600],
   lineHeight: typographyVars.lineHeight[900],
-  maxWidth: "40rem",
+  maxWidth: "none",
   color: themeVars.text.default,
 });
 
