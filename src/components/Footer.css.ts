@@ -2,13 +2,13 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
-import { CONTAINER_WIDE } from "../styles/tokens";
+import { CONTAINER } from "../styles/tokens";
 import { textStyles } from "../styles/typography.semantic.css";
 
 export const footer = style([
   textStyles.caption2,
   {
-    width: CONTAINER_WIDE,
+    width: CONTAINER,
     margin: "0 auto",
     display: "flex",
     alignItems: "center",

@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
-import { CONTAINER_NARROW } from "../styles/tokens";
+import { CONTAINER } from "../styles/tokens";
 import { typographyVars } from "../styles/typography.css";
 import { textStyles } from "../styles/typography.semantic.css";
 
@@ -17,7 +17,7 @@ export const metadata = style([
 ]);
 
 export const article = style({
-  width: CONTAINER_NARROW,
+  width: CONTAINER,
   margin: "0 auto",
   paddingTop: layoutVars.space.lg,
   paddingBottom: layoutVars.space.lg,
