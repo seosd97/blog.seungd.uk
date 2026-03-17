@@ -22,20 +22,23 @@ const neutralScaleContract = {
   ...scaleContract,
 } as const;
 
-const feedbackContract = {
-  bg: null,
-  border: null,
-  text: null,
+const primaryContract = {
+  ...scaleContract,
+  "400a2": null,
+  "400a4": null,
+  "400a8": null,
+  "400a12": null,
+  "400a18": null,
+  "300a24": null,
+  "400a32": null,
 } as const;
 
-const buttonContract = {
-  bg: null,
-  bgHover: null,
-  bgActive: null,
-  text: null,
+const amberContract = {
+  ...scaleContract,
+  "400a12": null,
 } as const;
 
-const sumirePrimaryContract = {
+const secondaryContract = {
   ...scaleContract,
   "300a2": null,
   "300a18": null,
@@ -47,26 +50,18 @@ const sumirePrimaryContract = {
   "400a14": null,
   "400a16": null,
   "400a18": null,
+  "400a24": null,
   "500a10": null,
+  "950a48": null,
   "950a92": null,
-} as const;
-
-const amberContract = {
-  ...scaleContract,
-  "400a12": null,
 } as const;
 
 const colorContract = {
   sand: neutralScaleContract,
-  sumirePrimary: sumirePrimaryContract,
-  sumireSecondary: scaleContract,
-  night: scaleContract,
-  iris: scaleContract,
+  primary: primaryContract,
+  secondary: secondaryContract,
   silver: scaleContract,
-  green: scaleContract,
   amber: amberContract,
-  red: scaleContract,
-  sky: scaleContract,
 } as const;
 
 const semanticContract = {
@@ -76,8 +71,6 @@ const semanticContract = {
     muted: null,
     elevated: null,
     inset: null,
-    softPrimary: null,
-    softSecondary: null,
     overlay: null,
   },
   text: {
@@ -127,26 +120,11 @@ const semanticContract = {
     bg: null,
     text: null,
   },
-  feedback: {
-    success: feedbackContract,
-    warning: feedbackContract,
-    danger: feedbackContract,
-    info: feedbackContract,
-  },
   button: {
-    primary: buttonContract,
-    secondary: buttonContract,
     ghost: {
       hover: null,
       active: null,
     },
-  },
-  gradient: {
-    hero: null,
-    panel: null,
-  },
-  shadow: {
-    color: null,
   },
 } as const;
 
