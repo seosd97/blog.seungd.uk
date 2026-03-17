@@ -15,9 +15,6 @@ globalStyle("body", {
   margin: 0,
   minHeight: "100vh",
   backgroundColor: themeVars.bg.canvas,
-  backgroundImage: themeVars.gradient.panel,
-  backgroundRepeat: "no-repeat",
-  backgroundAttachment: "fixed",
   color: themeVars.text.default,
   fontFamily: FONT_BODY,
   lineHeight: typographyVars.lineHeight[800],
@@ -101,13 +98,14 @@ globalStyle("main", {
 });
 
 // Shiki dual theme: swap colors in dark mode
+// Inline styles from Shiki need !important to override
 globalStyle(':root[data-theme="dark"] .astro-code', {
-  color: "var(--shiki-dark)" as never,
-  backgroundColor: "var(--shiki-dark-bg)" as never,
+  color: "var(--shiki-dark) !important" as never,
+  backgroundColor: "var(--shiki-dark-bg) !important" as never,
 });
 
 globalStyle(':root[data-theme="dark"] .astro-code span', {
-  color: "var(--shiki-dark)" as never,
+  color: "var(--shiki-dark) !important" as never,
 });
 
 // Reduced motion support

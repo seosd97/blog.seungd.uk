@@ -7,8 +7,8 @@ import { typographyVars } from "../styles/typography.css";
 
 export const menuBtn = style({
   position: "relative",
-  width: "2.75rem",
-  height: "37px",
+  width: "3.5rem",
+  height: "2.75rem",
   padding: 0,
   border: "none",
   background: "none",
@@ -21,9 +21,8 @@ export const menuLine = style({
   position: "absolute",
   left: 0,
   width: "100%",
-  height: "1px",
-  backgroundColor: "currentColor",
-  transition: "background-color 160ms ease",
+  height: 0,
+  borderTop: `1px solid currentColor`,
 });
 
 export const overlay = style({
@@ -86,7 +85,7 @@ export const overlayNavLink = style({
   textDecoration: "none",
   transition: "color 160ms ease",
   ":hover": {
-    color: themeVars.text.muted,
+    color: themeVars.accent.primaryHover,
   },
 });
 
@@ -113,6 +112,6 @@ export const overlaySocialLink = style({
   color: themeVars.text.strong,
   transition: "color 160ms ease",
   ":hover": {
-    color: themeVars.text.muted,
+    color: themeVars.accent.primary,
   },
 });
