@@ -1,7 +1,8 @@
 ---
 import { APP_METADATA } from "../constants";
-import { dot, footer, info, inlineLink, socialLink, socialLinks } from "./Footer.css";
+import { dot, footer, footerActions, info, inlineLink, socialLink, socialLinks } from "./Footer.css";
 import SocialLinks from "./SocialLinks.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <footer class={footer}>
@@ -10,5 +11,8 @@ import SocialLinks from "./SocialLinks.astro";
     <span class={dot} />
     <span>Built with <a href="https://astro.build" class={inlineLink}>Astro</a></span>
   </div>
-  <div class={socialLinks}><SocialLinks size={16} linkClass={socialLink} /></div>
+  <div class={footerActions}>
+    <div class={socialLinks}><SocialLinks size={16} linkClass={socialLink} /></div>
+    <ThemeToggle />
+  </div>
 </footer>

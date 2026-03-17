@@ -38,20 +38,26 @@ export const dot = style({
 export const inlineLink = style({
   color: themeVars.text.muted,
   ":hover": {
-    color: themeVars.text.strong,
+    color: themeVars.accent.primary,
   },
+});
+
+export const footerActions = style({
+  display: "flex",
+  alignItems: "center",
+  gap: layoutVars.space.md,
 });
 
 export const socialLinks = style({
   display: "flex",
   alignItems: "center",
-  gap: layoutVars.space.sm,
+  gap: layoutVars.space.md,
 });
 
 export const socialLink = style({
   display: "inline-flex",
   color: themeVars.text.muted,
   ":hover": {
-    color: themeVars.text.strong,
+    color: themeVars.accent.primary,
   },
 });

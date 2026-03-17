@@ -1,8 +1,8 @@
 ---
 import { menuBtn, menuLine } from "./Header.css";
 
-const gap = 8;
 const lineCount = 5;
+const gap = 8;
 const tops = Array.from({ length: lineCount }, (_, i) => i * (gap + 1));
 ---
 
@@ -13,5 +13,5 @@ const tops = Array.from({ length: lineCount }, (_, i) => i * (gap + 1));
   aria-expanded="false"
   data-menu-trigger
 >
-  {tops.map((top) => <span class={menuLine} style={`top:${top}px`} />)}
+  {tops.map((top) => <span class={menuLine} style={`top:${top}px;`} />)}
 </button>

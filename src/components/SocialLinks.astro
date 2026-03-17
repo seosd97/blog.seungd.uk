@@ -1,5 +1,5 @@
 ---
-import { Github, Twitter } from "lucide-astro";
+import { Icon } from "astro-icon/components";
 import { SOCIAL_LINKS } from "../constants";
 
 interface Props {
@@ -17,7 +17,7 @@ const { size = 16, linkClass } = Astro.props;
   rel="noopener noreferrer"
   aria-label="X (Twitter)"
 >
-  <Twitter size={size} />
+  <Icon name="simple-icons:x" size={size} />
 </a>
 <a
   href={SOCIAL_LINKS.github}
@@ -26,5 +26,5 @@ const { size = 16, linkClass } = Astro.props;
   rel="noopener noreferrer"
   aria-label="GitHub"
 >
-  <Github size={size} />
+  <Icon name="simple-icons:github" size={size} />
 </a>
