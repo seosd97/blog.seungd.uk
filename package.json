@@ -12,7 +12,8 @@
     "astro": "astro",
     "lint": "biome lint .",
     "format": "biome format --write .",
-    "check": "biome check ."
+    "check": "biome check .",
+    "deploy": "astro build && wrangler pages deploy"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.0",
