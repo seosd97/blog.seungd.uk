@@ -3,7 +3,7 @@ import ArticleList from "../components/ArticleList";
 import MenuLines from "../components/MenuLines.astro";
 import { APP_METADATA } from "../constants";
 import Layout from "../layouts/Layout.astro";
-import { pageHeading, pageWrapper } from "../styles/page.css";
+import { pageHeading, pageTitleLink, pageWrapper } from "../styles/page.css";
 import { calculateReadingTime, getPublishedArticles } from "../utils/articles";
 
 const articles = await getPublishedArticles();
@@ -20,7 +20,7 @@ const serialized = articles.map((article) => ({
 
 <Layout title={APP_METADATA.title}>
   <div class={pageWrapper}>
-    <h1 class={pageHeading}><a href="/a">Articles</a></h1>
+    <h1 class={pageHeading}><a href="/a" class={pageTitleLink}>Articles</a></h1>
     <MenuLines />
     <ArticleList client:load articles={serialized} />
   </div>

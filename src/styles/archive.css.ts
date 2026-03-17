@@ -13,8 +13,6 @@ export const yearSection = style({
 export const yearHeading = style([
   textStyles.heading2,
   {
-    fontFamily: FONT_DISPLAY,
-    fontWeight: typographyVars.weight[600],
     marginBottom: layoutVars.space.sm,
   },
 ]);

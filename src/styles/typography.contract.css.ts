@@ -46,7 +46,6 @@ export const typographyVars = createGlobalThemeContract(
       400: null,
       500: null,
       600: null,
-      650: null,
       700: null,
     },
   },

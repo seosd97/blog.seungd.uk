@@ -3,6 +3,7 @@ export const APP_METADATA = {
   title: "seosd의 블로그",
   description: "개발, 디자인, 그리고 일상의 기록",
   author: "seosd",
+  ogImage: "/logo.png",
 } as const;
 
 export const SOCIAL_LINKS = {

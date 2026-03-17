@@ -24,6 +24,13 @@ globalStyle("body", {
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
+  "@media": {
+    "(prefers-reduced-motion: reduce)": {
+      animationDuration: "0.01ms !important" as never,
+      animationIterationCount: "1 !important" as never,
+      transitionDuration: "0.01ms !important" as never,
+    },
+  },
 });
 
 globalStyle("img", {
@@ -108,13 +115,3 @@ globalStyle(':root[data-theme="dark"] .astro-code span', {
   color: "var(--shiki-dark) !important" as never,
 });
 
-// Reduced motion support
-globalStyle("*, *::before, *::after", {
-  "@media": {
-    "(prefers-reduced-motion: reduce)": {
-      animationDuration: "0.01ms !important" as never,
-      animationIterationCount: "1 !important" as never,
-      transitionDuration: "0.01ms !important" as never,
-    },
-  },
-});

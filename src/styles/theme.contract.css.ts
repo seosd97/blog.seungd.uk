@@ -17,11 +17,6 @@ const scaleContract = {
   950: null,
 } as const;
 
-const neutralScaleContract = {
-  0: null,
-  ...scaleContract,
-} as const;
-
 const primaryContract = {
   ...scaleContract,
   "400a2": null,
@@ -31,11 +26,6 @@ const primaryContract = {
   "400a18": null,
   "300a24": null,
   "400a32": null,
-} as const;
-
-const amberContract = {
-  ...scaleContract,
-  "400a12": null,
 } as const;
 
 const secondaryContract = {
@@ -57,11 +47,10 @@ const secondaryContract = {
 } as const;
 
 const colorContract = {
-  sand: neutralScaleContract,
+  white: null,
   primary: primaryContract,
   secondary: secondaryContract,
   silver: scaleContract,
-  amber: amberContract,
 } as const;
 
 const semanticContract = {
@@ -70,8 +59,6 @@ const semanticContract = {
     subtle: null,
     muted: null,
     elevated: null,
-    inset: null,
-    overlay: null,
   },
   text: {
     strong: null,
@@ -79,7 +66,6 @@ const semanticContract = {
     soft: null,
     muted: null,
     disabled: null,
-    onAccent: null,
   },
   border: {
     subtle: null,
@@ -90,14 +76,10 @@ const semanticContract = {
     primary: null,
     primaryHover: null,
     primaryActive: null,
-    secondary: null,
-    secondaryHover: null,
-    secondaryActive: null,
   },
   link: {
     default: null,
     hover: null,
-    visited: null,
   },
   focus: {
     ring: null,
@@ -115,10 +97,6 @@ const semanticContract = {
   quote: {
     bg: null,
     border: null,
-  },
-  mark: {
-    bg: null,
-    text: null,
   },
   button: {
     ghost: {

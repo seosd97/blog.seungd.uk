@@ -4,6 +4,7 @@ import { layoutVars } from "../styles/layout.css";
 import { themeVars } from "../styles/theme.css";
 import { FONT_DISPLAY } from "../styles/tokens";
 import { typographyVars } from "../styles/typography.css";
+import { textStyles } from "../styles/typography.semantic.css";
 
 export const menuBtn = style({
   position: "relative",
@@ -76,18 +77,20 @@ export const overlayNav = style({
   gap: "0.125rem",
 });
 
-export const overlayNavLink = style({
-  fontSize: typographyVars.size[1300],
-  fontFamily: FONT_DISPLAY,
-  fontWeight: typographyVars.weight[600],
-  lineHeight: typographyVars.lineHeight[400],
-  color: themeVars.text.strong,
-  textDecoration: "none",
-  transition: "color 160ms ease",
-  ":hover": {
-    color: themeVars.accent.primaryHover,
+export const overlayNavLink = style([
+  textStyles.display,
+  {
+    fontFamily: FONT_DISPLAY,
+    fontWeight: typographyVars.weight[600],
+    lineHeight: typographyVars.lineHeight[400],
+    color: themeVars.text.strong,
+    textDecoration: "none",
+    transition: "color 160ms ease",
+    ":hover": {
+      color: themeVars.accent.primaryHover,
+    },
   },
-});
+]);
 
 export const overlayNavLinkActive = style({
   color: themeVars.text.muted,

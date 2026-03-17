@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# AI crawlers
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Claude-Web
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://blog.seungd.uk/sitemap-index.xml

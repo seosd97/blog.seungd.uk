@@ -45,7 +45,6 @@ globalStyle(`${prose} > :first-child`, {
 
 globalStyle(`${prose} blockquote`, {
   borderLeft: `2px solid ${themeVars.quote.border}`,
-  backgroundColor: "transparent",
   paddingLeft: "0.75rem",
   marginLeft: 0,
   marginRight: 0,

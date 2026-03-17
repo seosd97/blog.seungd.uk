@@ -4,7 +4,7 @@ import MenuLines from "../components/MenuLines.astro";
 import { APP_METADATA } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import * as archive from "../styles/archive.css";
-import { pageTitle, pageWrapper } from "../styles/page.css";
+import { pageTitle, pageTitleLink, pageWrapper } from "../styles/page.css";
 import { getPublishedArticles } from "../utils/articles";
 
 const articles = await getPublishedArticles();
@@ -23,7 +23,7 @@ const years = Object.keys(articlesByYear)
 
 <Layout title={`Archive — ${APP_METADATA.title}`}>
   <div class={pageWrapper}>
-    <h1 class={pageTitle}><a href="/archive">Archive</a></h1>
+    <h1 class={pageTitle}><a href="/archive" class={pageTitleLink}>Archive</a></h1>
     <MenuLines />
 
     {years.map((year) => (
