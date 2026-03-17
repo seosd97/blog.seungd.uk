@@ -2,6 +2,7 @@
 import { format } from "date-fns";
 import MenuLines from "../components/MenuLines.astro";
 import { APP_METADATA } from "../constants";
+import { pageHeading } from "../styles/page.css";
 import { prose } from "../styles/prose.css";
 import * as styles from "./ArticleLayout.css";
 import Layout from "./Layout.astro";
@@ -18,6 +19,7 @@ const { title, description, date, tags } = Astro.props;
 
 <Layout title={title} description={description} ogType="article" publishedDate={date.toISOString()}>
   <article class={styles.article}>
+    <h1 class={pageHeading}><a href="/a">Articles</a></h1>
     <MenuLines />
     <header class={styles.header}>
       <h1 class={styles.articleTitle}>{title}</h1>

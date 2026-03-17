@@ -23,17 +23,17 @@ const years = Object.keys(articlesByYear)
 
 <Layout title={`Archive — ${APP_METADATA.title}`}>
   <div class={pageWrapper}>
-    <h1 class={pageTitle}>Archive</h1>
+    <h1 class={pageTitle}><a href="/archive">Archive</a></h1>
     <MenuLines />
 
     {years.map((year) => (
-      <section key={year} class={archive.yearSection}>
+      <section class={archive.yearSection}>
         <h2 class={archive.yearHeading}>{year}</h2>
         <ul class={archive.articleList}>
           {articlesByYear[year].map((article) => (
-            <li key={article.id} class={archive.articleItem}>
+            <li class={archive.articleItem}>
               <time class={archive.articleDate}>{format(article.data.date, "MM.dd")}</time>
-              <a class={archive.articleLink} href={`/articles/${article.id}`}>
+              <a class={archive.articleLink} href={`/a/${article.id}`}>
                 {article.data.title}
               </a>
             </li>

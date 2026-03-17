@@ -1,11 +1,14 @@
-// @ts-check
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+
 export default defineConfig({
   site: "https://blog.seungd.uk",
+  redirects: {
+    "/a": "/",
+  },
   integrations: [react(), sitemap(), icon()],
   vite: {
     plugins: [vanillaExtractPlugin()],

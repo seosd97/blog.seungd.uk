@@ -46,7 +46,7 @@ function ArticleListInner({ articles }: { articles: Article[] }) {
               {format(new Date(article.date), "yyyy.MM.dd")}
             </time>
 
-            <a href={`/articles/${article.slug}`} className={styles.title}>
+            <a href={`/a/${article.slug}`} className={styles.title}>
               {article.title}
             </a>
 

@@ -20,7 +20,7 @@ const serialized = articles.map((article) => ({
 
 <Layout title={APP_METADATA.title}>
   <div class={pageWrapper}>
-    <h1 class={pageHeading}>Articles</h1>
+    <h1 class={pageHeading}><a href="/a">Articles</a></h1>
     <MenuLines />
     <ArticleList client:load articles={serialized} />
   </div>
